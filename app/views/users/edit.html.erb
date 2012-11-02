@@ -1,0 +1,30 @@
+<% provide(:title, "编辑资料") %> 
+<h1>更新个人资料</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+  <%= form_for @user do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :昵称 %>
+      <%= f.text_field :name %>
+
+      <%= f.label :email地址 %>
+      <%= f.text_field :email %>
+
+      <%= f.label :密码 %>
+      <%= f.password_field :password %>
+
+      <%= f.label :密码确认 %>
+      <%= f.password_field :password_confirmation %>
+
+      头像：<br>
+      <%= image_tag current_user.photo.url(:thumb) %>
+      <%= f.label :更改头像 %>
+      <%= f.file_field :photo %>
+
+      <%= f.submit "保存更改", class: "btn btn-large btn-primary" %>
+    <% end %>
+
+  </div>
+</div>

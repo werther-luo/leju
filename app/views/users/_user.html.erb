@@ -1,0 +1,14 @@
+<li>
+  <a href="<%= user_path(user) %>">
+		<% if user.has_photo? %>
+      <%= image_tag user.photo.url(:thumb) %>
+		<% else %>
+			<%= gravatar_for user, size: 52 %>
+		<% end %>
+</a>
+  <%= link_to user.name, user %>
+  <% if current_user.admin? && !current_user?(user) %>
+    | <%= link_to "删除", user, method: :delete,
+                                  data: { confirm: "确定删除该用户?" } %>
+  <% end %>
+</li>

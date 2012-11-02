@@ -1,0 +1,9 @@
+<%= form_for(@micropost) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_area :content, placeholder: "发表对该活动的评论。。。" %>
+  </div>
+
+  <div><%= hidden_field_tag 'activity_id', "#{@activity.id}"  %></div>
+  <%= f.submit "发布", class: "btn btn-large btn-primary" %>
+<% end %>

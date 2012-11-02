@@ -1,0 +1,19 @@
+<%= form_for(@activity) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <ul>
+    <li>活动标题:&nbsp;&nbsp;&nbsp;&nbsp;<%= f.text_field :title %><a style="position:relative;left:60px;">*</a></li> 
+    <li>开始时间:&nbsp;&nbsp;&nbsp;&nbsp;<%= f.text_field :time_start ,id:"date-input"%><a style="position:relative;left:60px;">*</a></li> 
+    <li>结束时间:&nbsp;&nbsp;&nbsp;&nbsp;<%= f.text_field :time_end, id:"date-input" %><a style="position:relative;left:60px;">*</a></li> 
+    <li>活动地点:&nbsp;&nbsp;&nbsp;&nbsp;<%= f.text_field :GUID %><a style="position:relative;left:60px;">*</a></li>
+    <li>活动内容:&nbsp;&nbsp;&nbsp;&nbsp;<%= f.text_field :content %><a style="position:relative;left:60px;">*</a></li>
+    <li>活动标签:&nbsp;&nbsp;&nbsp;&nbsp;<%= collection_select(:tag, :id, Tag.all, :id, :content, options = {prompt: "选择一个标签", multiple: true}) %> <a style="position:relative;left:60px;">*</a></li>
+    <li>备注内容:&nbsp;&nbsp;&nbsp;&nbsp;<%= f.text_field :time_start %><a style="position:relative;left:60px;">*</a></li>
+
+    </ul>
+  </div>
+  <p></p>
+  <p style="position:relative;left:260px;">
+    <%= f.submit "发布",class: "btn-large" %>
+  </p>
+<% end %>

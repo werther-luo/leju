@@ -1,0 +1,36 @@
+<% if signed_in? %>
+  <div class="row">
+    <aside class="span4">
+      <section>
+        <%= render 'shared/user_info' %>
+      </section>
+      <section>
+        <%= render 'shared/stats' %>
+      </section>
+      <section>
+        <%= render 'shared/activity_form' %>
+      </section>
+    </aside>
+    <div class="span8">
+      <h3>活动列表</h3>
+      <ol class="microposts">
+        <%= render @activities %>
+      </ol>
+      <%= will_paginate @activities %>
+    </div>
+  </div>
+<% else %>
+  <div class="center hero-unit">
+    <h1>欢迎来到乐聚</h1><br>
+    <h2>一个帮你为你组织活动，寻找活动的web应用！</h2>
+
+    <%= link_to "现在注册", signup_path, 
+                                class: "btn btn-large btn-primary" %>
+    <br>
+    <br><br><br>
+    已有账号：<br>
+    <%= link_to "登陆", signin_path, 
+                                class: "btn btn-large btn-primary" %>
+  </div>
+
+<% end %>

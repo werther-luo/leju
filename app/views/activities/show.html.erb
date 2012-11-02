@@ -1,0 +1,78 @@
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= @activity.title %>
+      </h1>
+    </section>
+    <section>
+      <div class="stats">
+      <strong id="followers" class="stat">
+        <%= @activity.act_followers.count %>
+      </strong>
+      个参与者
+      </div>
+      <% if @users.any? %>
+        <%= render 'user_avatars'%>
+      <% end %>
+    </section>
+    <section>
+        <%= render 'shared/comment_form' %>
+    </section>
+
+    <section>
+      <%= form_for @photo,:url => photos_path, :html => { :multipart => true } do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <%= f.label :上传有关活动图片 %>
+        <%= f.file_field :image %>
+        <%= f.text_area :description, placeholder: "关于图片的描述。。。" %>
+                  <%= hidden_field_tag "activity_id", @activity.id %>
+        <%= f.submit "上传图片", class: "btn btn-large btn-primary" %>
+      <% end  %>
+    </section>
+  </aside>
+
+  <div class="span8"> 
+    <%= render 'follow_form' if signed_in? %>
+      <h3>活动标题</h3><br/>
+      <%= @activity.title %><br/><br/><br/>
+      <h3>活动标签</h3><br/>
+      <% @activity.tags.each do |t|%>
+        <h2><%= t.content %></h2>
+      <%end %>
+      <h3>活动内容</h3><br/>
+      <%= @activity.content %><br/><br/>
+      <HR>
+          <br/>
+      <HR>
+      <h3>活动图片</h3><br/>
+      <% if @activity.photos.any? %>
+        <% @activity.photos.each do |p| %>
+          <% next if !p.has_image? %>
+            
+          <ul class="thumbnails">
+              <div class="thumbnail">
+                <%= image_tag p.image.url %><br>
+                <h5> 由<%= link_to @user.name, @user %>上传<br></h5>
+                <p><%= p.description %></p>
+              </div>
+          </ul>
+          
+          
+        <% end %>
+      <% end %>
+
+      <HR>
+  </div>
+
+  <div class="span8"> 
+    <HR>
+
+    <h3>本活动有<%= @activity.microposts.count %>条评论：</h3>
+    <ol class="microposts">
+        <%= render @microposts if @microposts.any?%>
+      </ol>
+      <%= will_paginate @microposts %>
+  </div>
+</div>

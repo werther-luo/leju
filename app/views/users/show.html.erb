@@ -1,0 +1,45 @@
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <a href="<%= user_path(@user) %>">
+        <% if @user.has_photo? %>
+            <%= image_tag @user.photo.url(:thumb) %>
+          <% else %>
+            <%= gravatar_for @user, size: 52 %>
+          <% end %>
+        </a>
+        <%= @user.name %>
+       <br>
+      </h1>
+    </section>
+    <section>
+      <%= render 'shared/stats' %>
+    </section>
+  </aside>
+  <div class="span8">
+    <%= render 'follow_form' if signed_in? %>
+    <% if @user.microposts.any? %>
+      <h3>个人评论 (<%= @user.microposts.count %>)</h3>
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
+      <%= will_paginate @microposts %>
+    <% end %>
+
+    <hr>
+    ================================================================
+
+    ================================================================
+    <hr>
+    
+    <% if @user.activities.any? %>
+      <h3>已创建 (<%= @user.activities.count %>)个活动：</h3>
+      <ol class="microposts">
+        <%= render @activities %>
+      </ol>
+      <%= will_paginate @activities %>
+    <% end %>
+  </div>
+</div>

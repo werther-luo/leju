@@ -1,0 +1,12 @@
+<div class="user_avatars" id="user_avatars">
+          <h1>活动参与者：</h1>
+          <% @users.each do |user| %>
+          <a href="<%= user_path(user) %>">
+			  <% if !user.photo? %>
+			      <%= gravatar_for user, size: 52 %>
+			    <% else %>
+			      <%= image_tag user.photo.url(:thumb) %>
+			    <% end %>
+		  </a>
+          <% end %>
+</div>

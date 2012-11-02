@@ -1,0 +1,16 @@
+<a href="<%= user_path(current_user) %>">
+	<% if current_user.has_photo? %>
+  		<%= image_tag current_user.photo.url(:thumb) %>
+  	<% else %>
+  		<%= gravatar_for current_user, size: 52 %>
+  	<% end %>
+</a>
+<h1>
+  <%= current_user.name %>
+</h1>
+<span>
+  <%= link_to "查看个人资料", current_user %>
+</span>
+<span>
+  <%= current_user.microposts.count  %>条评论
+</span>
