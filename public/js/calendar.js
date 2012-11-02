@@ -79,10 +79,14 @@ return box;
 return init;
 }();
 onload = function () {
-new DatePicker('_DatePicker_demo', {
-inputId: 'date-input',
-className: 'date-picker-wp',
-seprator: '-'
-});
-new DatePicker('_demo2', {inputId: 'demo2', className: 'date-picker-wp'})
-}
+    new DatePicker('_DatePicker_demo', {
+        inputId:'start-time',
+        className:'date-picker-wp',
+        seprator:'-'
+    });
+    new DatePicker('_DatePicker_demo2', {
+        inputId:'end-time',
+        className:'date-picker-wp1',
+        seprator:'-'
+    });
+};

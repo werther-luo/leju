@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120816201453) do
+ActiveRecord::Schema.define(:version => 20121102085648) do
 
   create_table "act_photo_relas", :force => true do |t|
     t.integer  "activity_id"
@@ -47,9 +47,20 @@ ActiveRecord::Schema.define(:version => 20120816201453) do
     t.integer  "user_id"
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
+    t.integer  "pcount"
   end
 
   add_index "activities", ["user_id", "created_at"], :name => "index_activities_on_user_id_and_created_at"
+
+  create_table "addresses", :force => true do |t|
+    t.string   "addressLine"
+    t.string   "address"
+    t.float    "lat"
+    t.float    "lng"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "activity_id"
+  end
 
   create_table "interest_tag_records", :force => true do |t|
     t.integer  "user_id"

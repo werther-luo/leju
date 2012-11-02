@@ -60,22 +60,43 @@
     <h3>&nbsp;&nbsp;发布活动</h3>
     <ul></ul>
     <ul>
-      <%= render 'shared/activity_form' %>
-      <li>活动名称<input type="text" id="activity-name-input" class="input-xlarge" placeholder="6-20个汉字" style="position:relative;left:30px;"><a style="position:relative;left:60px;">*</a></li>
-      <!-- id="date-input"是日历1的特效 请见calendar.js的文件-->
-      <li>活动时间<input type="text" id="date-input" class="input-xlarge" placeholder="请选择活动开始时间" style="position:relative;left:30px;"/><a style="position:relative;left:60px;">*</a></li>
-      <li>活动类型<input type="text" id="activity-type-input" class="input-xlarge" placeholder="6-20个汉字" style="position:relative;left:30px;"><a style="position:relative;left:60px;">*</a></li>
-      <li>活动地点<input type="text" id="activity-place-input" class="input-xlarge" placeholder="请输入活动地点" style="position:relative;left:30px;"><a style="position:relative;left:60px;">*</a></li>
-      <li>活动人数<input type="text" id="activity-number-input" class="input-xlarge" placeholder="请输入活动人数" style="position:relative;left:30px;"><a style="position:relative;left:60px;">*</a></li>
-      <li>邀请人员<input type="text" id="activity-people-input" class="input-xlarge" placeholder="请邀请人员参与活动" style="position:relative;left:30px;"><a style="position:relative;left:60px;">*</a></li>
-      <p></p>
-      <li>活动描述<textarea class="span5" name="textArea1" id="activity-description-input" cols="30" rows="2" placeholder="请对活动进行适当描述" style="position:relative;left:30px;"></textarea><a style="position:relative;left:60px;">*</a></li>
-      <p></p>
-      <li>备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注<textarea class="span5" name="textArea1" id="activity-ps-input" cols="30" rows="2" placeholder="请适当的添加备注" style="position:relative;left:30px;"></textarea></li>
-      <p></p>
-      <p><button type="submit" class="btn-large" id="activity-submit" style="position:relative;left:260px;">提交</button></p>
+        <li>活动名称<input type="text" id="activity-name-input" class="input-xlarge" placeholder="6-20个汉字"
+                       style="position:relative;left:30px;"><a style="position:relative;left:60px;">*</a></li>
+        <!-- id="date-input"是日历1的特效 请见calendar.js的文件-->
+        <li>开始时间<input type="text" id="start-time" class="input-xlarge" placeholder="请选择活动开始时间"
+                       style="position:relative;left:30px;"/><a style="position:relative;left:60px;">*</a></li>
+        <li>结束时间<input type="text" id="end-time" class="input-xlarge" placeholder="请选择活动结束时间"
+                       style="position:relative;left:30px;"/><a style="position:relative;left:60px;">*</a></li>
+        <li>活动类型
+            <select id="type-input" class="input-xlarge" style="position:relative;left:30px;">
+                <option value="旅游">旅游</option>
+                <option value="体育">体育</option>
+                <option value="吃货">吃货</option>
+                <option value="电子竞争">电子竞争</option>
+            </select>
+        </li>
+        <li>活动人数<input type="text" id="activity-number-input" class="input-xlarge" placeholder="请输入活动人数"
+                       style="position:relative;left:30px;"><a style="position:relative;left:60px;">*</a></li>
+        <li>邀请人员<input type="text" id="activity-people-input" class="input-xlarge" placeholder="请邀请人员参与活动"
+                       style="position:relative;left:30px;"><a style="position:relative;left:60px;">*</a></li>
+        <p></p>
+        <li>活动描述<textarea class="span5" name="textArea1" id="activity-description-input" cols="30" rows="2"
+                          placeholder="请对活动进行适当描述" style="position:relative;left:30px;"></textarea><a
+                style="position:relative;left:60px;">*</a></li>
+        <p></p>
+        <li>备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注<textarea class="span5" name="textArea1" id="activity-ps-input"
+                                                            cols="30" rows="2" placeholder="请适当的添加备注"
+                                                            style="position:relative;left:30px;"></textarea></li>
+        <p></p>
+
+        <p>
+            <button type="submit" class="btn-large close_c-button" id="activity-submit"
+                    style="position:relative;left:260px;">提交
+            </button>
+        </p>
     </ul>
-    </div>
+</div>
+
 
 <!-- Container for a modal window: leju guess 下面这个div跟上面的基本相同，是给乐聚猜 就是活动推荐用的--> 
     <div class="modal_b ow-closed well modal" id="id_recommend_container">

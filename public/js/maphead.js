@@ -105,17 +105,25 @@ $(function () {
                     $modal_a.trigger('show');
 
                     $('#activity-submit').click(function () {
-                        alert($('#activity-name-input').val());
-                        alert($('#date-input').val());
-                        alert($('#activity-type-input').val());
-                        alert($('#activity-number-input').val());
-                        alert($('#activity-description-input').val());
-                        alert(e.latLng.lat() + ', ' + e.latLng.lng());
+                        // alert($('#activity-name-input').val());
+                        // alert($('#date-input').val());
+                        // alert($('#activity-type-input').val());
+                        // alert($('#activity-number-input').val());
+                        // alert($('#activity-description-input').val());
+                        // alert(e.latLng.lat() + ', ' + e.latLng.lng());
 
 
-                        var url = 'activities/new',
+                        var url = 'activities',
                             data = {
-
+                                title : $('#activity-name-input').val(),
+                                startTime: $('#start-time').val(),
+                                endTime : $('#end-time').val(),
+                                type : $('#type-input').val(),
+                                peopleNum: $('#activity-number-input').val(),
+                                content: $('#activity-description-input').val(),
+                                ps : $('#activity-ps-input').val(),
+                                lat:e.latLng.lat(),
+                                lng:e.latLng.lng()
                             },
                             success = function(){
                                 alert("活动创建成功");

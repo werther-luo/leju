@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   require 'net/http'
+  require 'json'
   def home
     if signed_in?
       @micropost  = current_user.microposts.build
@@ -28,17 +29,11 @@ class StaticPagesController < ApplicationController
 
   def map
     @activity = current_user.activities.build
+    # puts "iiiiooooooooooooooo"
   end
 
   def jiepan
-    
-
-    url = URI.parse('http://api.jiepang.com/v1/locations/search?lat=39.916&lon=116.393&count=2&source=100639')
-    req = Net::HTTP::Get.new(url.path)
-    res = Net::HTTP.start(url.host, url.port) {|http|
-    http.request(req)
-    }
-    puts res.body
-    
+    # puts "get jiepan"
+    puts params[:title]
   end
 end
