@@ -25,11 +25,15 @@ module SessionsHelper
   def signed_in_user
     unless signed_in?
       store_location
-      redirect_to signin_path, notice: "Please sign in."
+      redirect_to login_path, notice: "Please sign in."
     end
   end
 
   def sign_out
+    #删除signedAddress中的数据
+    if SignedAddress.find_by_user_id(current_user.id).destroy
+      puts "-------clear signed address for user" + current_user.name 
+    end
     current_user = nil
     cookies.delete(:remember_token)
   end

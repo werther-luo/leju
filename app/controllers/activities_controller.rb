@@ -9,7 +9,9 @@ class ActivitiesController < ApplicationController
 
   def create
     # 由经纬度查询地址名称，和地址
-    @addressLine = getAddressLine(params[:lat], params[:lng])
+    puts "-----------lat:" + params[:lat]
+    puts "-----------lng:" + params[:lng]
+    # @addressLine = getAddressLine(params[:lat], params[:lng])
     @addressSub = getAddress(params[:lat], params[:lng])
     puts "-----------before build activity  safsfa"
     puts "-----------current_user:" + current_user.name
@@ -34,7 +36,7 @@ class ActivitiesController < ApplicationController
       if @address.save!
         puts "-----------adress saved successful, and activity created successful"
         #成功创建活动，下面开始广播这个新的活动
-        publish_new_act
+        publish_new_act(@activity)
       else
         puts "-----------address insert error"
       end
@@ -65,7 +67,7 @@ class ActivitiesController < ApplicationController
     results[:adjActs] = objs_to_hash(@neighborActs)
     results[:relaActs] = objs_to_hash(current_user.followed_acts)
     results[:ownActs] = objs_to_hash(current_user.activities)
-    puts results.to_json
+    # puts results.to_json
     # respond_to do |format|
       respond_with results.to_json
     # end
@@ -95,6 +97,7 @@ class ActivitiesController < ApplicationController
     @url = "http://ditu.google.cn/maps/geo?output=json&key=abcdef&q=#{lat},#{lng}"
     puts "------url:" + @url
     result = Net::HTTP.get(URI.parse(@url))
+    puts "------success get results" + results
     @addressLine = "该地址没有确切的地名"
     @json = JSON::parse(result)
     if @json["Placemark"][0]["AddressDetails"]["Country"]["AdministrativeArea"]["Locality"]["DependentLocality"].has_key?"AddressLine"
@@ -138,7 +141,8 @@ class ActivitiesController < ApplicationController
     acts
   end
 
-  def publish_new_act
+  #新建活动和之后，发布广播通知周围的已登录的用户和好友 
+  def publish_new_act(act)
     puts "-------enter publish method"
     EM.run{
       puts "--------enter run block"
@@ -155,7 +159,27 @@ class ActivitiesController < ApplicationController
       results[:relaActs] = objs_to_hash(@neighborActs)
       #重写部分
 
-      client.publish('/activity/public', 'acts' => results.to_json)
+      # 首先被广播者应该是关注该活动创建人的用户，即活动创建者的好友
+      @creator_followers = act.creator.followers
+      puts "-------get followers  successful"
+      # 之后是该活动位置周边登陆的用户
+      @neighbor_singed_users = SignedAddress.get_near_by(act.address.lat, act.address.lng,10)
+      puts "-------get neighbor_singed_users successful"
+
+      # 开始publish
+      @creator_followers.each do |user|
+        puts "-------start publish to " + user.name + "channel"
+        client.publish("/newact/#{user.name}", 'act' => act)
+        puts "-------success publish to " + user.name + "channel"
+      end
+
+      @neighbor_singed_users.each do |user|
+        puts "-------start publish to " + user.name + "channel"
+        client.publish("/newact/#{user.name}", 'act' => act)
+        puts "-------success publish to " + user.name + "channel"
+      end
+      puts "--------publish successful"
+      # client.publish('/activity/public', 'acts' => results.to_json)
     }
   end
 

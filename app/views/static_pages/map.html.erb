@@ -135,8 +135,9 @@
             <ul class="nav nav-pills pull-right">
             <li class="guess-button"><a href="#"><i class="icon-upload icon-white"></i> 活动推荐</a></li> 
             <li><a href="account_setting.html"><i class="icon-cog icon-white"></i> 设置</a></li>
-            <li><a href="#"><i class="icon-off icon-white"></i> 退出</a></li>
-                  
+            <li><%= link_to "退出", signout_path, method: "delete" %></li>
+            
+            <li><a href="#">用户名<%=@current_user.name%></a></li>     
 
             </ul>           
 

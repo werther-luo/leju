@@ -5,5 +5,5 @@ rake db:populate
 
 
 thin start
-rackup faye.ru -E production -s thin
+
 
