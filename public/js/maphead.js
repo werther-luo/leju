@@ -40,15 +40,59 @@ $(function () {
         success: function (position) {
             map.setCenter(position.coords.latitude, position.coords.longitude);
 
-            map.addMarker({
-//        lat:position.coords.latitude,
-//        lng:position.coords.longitude,
-                lat: 38.876,
-                lng: 121.525,
-                title: 'Marker with InfoWindow',
-                infoWindow: {
-                    content: '<div><table><tr><td rowspan="2"><img src="Pictures/艺术学院.jpg"></td><td><a href="#">&nbsp;&nbsp;&nbsp;艺术学院</a></td></tr><tr><td></td><td></td></tr></table></br><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第九届校园艺术节将于9月20日盛大开幕，本次艺术节包括了绘画比赛，海报设计大赛，K歌大赛等项目，快来报名参加吧！</a></br></br>30分钟前<a class="pull-right" style="display:inline-block">分享(30)</a><a class="pull-right" style="display:inline-block">转发(30)&nbsp;&nbsp;&nbsp;</a><a class="pull-right" style="display:inline-block">参加(30)&nbsp;&nbsp;&nbsp;</a></div>'
-                }
+            //成功定位并且页面加载完成后，提交经纬度，获取结果为两个list，将其渲染到地图和右下角弹窗那里去
+            var initUrl = 'activities',
+                initData = {
+                    lng: position.coords.longitude,
+                    lat: position.coords.latitude
+                },
+                initSuccess = function(data){
+                    //此处进行渲染
+                    console.log("succed in replying data");
+
+                    var activityList = eval(data); //此处待定
+                    var adjecntActivities = activityList.adjActs, //取到地图活动 数组
+                        relativeActivities = activityList.relaActs,   //取到相关活动 数组
+                        i = 0,
+                        l = adjecntActivities.length,
+                        template = $('#tpl-infoWindow').html();   //用户渲染infoWindow的函数
+
+
+                    for (; i < l; i++) {
+                        var infoWindow = Mustache.to_html(template, 
+                            {
+                                time_start: adjecntActivities[i].time_start,
+                                content: adjecntActivities[i].content,
+                                creator_name: adjecntActivities[i].creator_name
+                            });
+                        
+                        map.addMarker({
+                            lat: adjecntActivities[i].lat,
+                            lng: adjecntActivities[i].lng,
+                            title: adjecntActivities[i].title,
+                            infoWindow: {
+                                content: infoWindow
+                            }
+                        });
+                    }
+
+                },
+                dataType = 'JSON';
+
+            $.ajax({
+                type: 'GET',
+                url: initUrl,
+                data: initData,
+                success: initSuccess,
+                dataType: dataType
+            });
+
+
+            // Create a new client to connect to Faye
+            var client = new Faye.Client('http://localhost:9292/faye');
+            // Subscribe to the public channel
+            var public_subscription = client.subscribe('/activity/public', function(data) {
+              console.log("from the server: " + data.acts);
             });
         },
 
@@ -64,19 +108,6 @@ $(function () {
 //            alert("Done!");
         }
     });
-
-    //添加marker
-//    map.addMarker({
-////        lat:position.coords.latitude,
-////        lng:position.coords.longitude,
-//        lat: 38.876,
-//        lng: 121.525,
-//        title: 'Marker with InfoWindow',
-//        infoWindow: {
-//            content: '<div><table><tr><td rowspan="2"><img src="Pictures/艺术学院.jpg"></td><td><a href="#">&nbsp;&nbsp;&nbsp;艺术学院</a></td></tr><tr><td></td><td></td></tr></table></br><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第九届校园艺术节将于9月20日盛大开幕，本次艺术节包括了绘画比赛，海报设计大赛，K歌大赛等项目，快来报名参加吧！</a></br></br>30分钟前<a class="pull-right" style="display:inline-block">分享(30)</a><a class="pull-right" style="display:inline-block">转发(30)&nbsp;&nbsp;&nbsp;</a><a class="pull-right" style="display:inline-block">参加(30)&nbsp;&nbsp;&nbsp;</a></div>'
-//        }
-//    });
-
 
     map.drawRoute({
         origin:[38.876, 121.525],

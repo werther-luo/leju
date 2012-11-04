@@ -50,11 +50,27 @@ class Activity < ActiveRecord::Base
   end
 
   def tag!(tag)
-  act_tag_relas.create!(tag_id: tag.id)    
+    act_tag_relas.create!(tag_id: tag.id)    
   end
 
   def untag!(tag)
     act_tag_relas.find_by_tag_id(tag).destroy
+  end
+
+  def self.getNeighbor(lat, lng, rang)
+    @acIds = "SELECT activity_id FROM addresses where 
+              lat>#{lat-rang} AND lat<#{lat+rang} 
+              AND lng>#{lng-rang} AND lng<#{lng+rang}"
+
+    Activity.where("id IN (#{@acIds})")
+  end
+
+  def to_hash
+    hash = {}
+    instance_variables.each do |var| 
+      hash[var.to_s.delete("@")] = instance_variable_get(var)
+    end
+    hash
   end
   
 end

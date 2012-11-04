@@ -29,7 +29,7 @@ SampleApp::Application.routes.draw do
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
   resources :user_ac_relas, only: [:create, :destroy]
-  resources :activities, only: [:new, :create, :destroy]
+  resources :activities, only: [:new, :create, :destroy,:index]
 
   root to: 'static_pages#home'
 
@@ -43,7 +43,8 @@ SampleApp::Application.routes.draw do
   match '/show_activity', to: 'static_pages#show_activity'
   match '/activities/:id', to: 'activities#show'
   match '/map', to: 'static_pages#map'
-  match 'jiepan', to: 'static_pages#jiepan'
+  match '/login', to: 'static_pages#login'
+  # match '/jiepan', to: 'static_pages#jiepan'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

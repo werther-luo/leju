@@ -1,0 +1,9 @@
+bundle install
+rake db:reset
+rake db:migrate
+rake db:populate
+
+
+thin start
+rackup faye.ru -E production -s thin
+

@@ -28,8 +28,13 @@ class StaticPagesController < ApplicationController
   end
 
   def map
-    @activity = current_user.activities.build
-    # puts "iiiiooooooooooooooo"
+    # @activity = current_user.activities.build
+    # @activities = current_user.feed_for_activity.paginate(page: params[:page])
+    @current_user = User.first
+  end
+
+  def login
+    
   end
 
   def jiepan
