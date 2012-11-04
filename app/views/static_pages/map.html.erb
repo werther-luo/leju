@@ -167,73 +167,56 @@
 <!-- 这个地方就是伸缩框的部分 相关js放在了chatwindow.js的最上面，很短，其实就是直接用了jquery， $('#opciones').slideToggle(); 用这一句控制了伸缩--> 
       <DIV id=settings>Settings</DIV>
       <DIV id=opciones style="overflow:scroll;overflow-x:hidden;">
-          <form class="nav form-search input-append">    
+          <form class="nav form-search input-append" id="listHeader">    
                 <input type="text" id="search2" class="input-small search-query input-append" placeholder="搜人/新动态"><button type="submit" id="search-submit2" class="btn"><i class="icon-search"></i></button>
             </form>
         <table>
-        <tr><td><img id="item2-pic" src="Pictures/资环学院.jpg">
-          <a href="#" id="item2-name" style="color:#ff7500;position:relative;bottom:14px;">&nbsp;资源与环境学院</a> 
-        </td></tr>
-        <tr><td>
-            <p id="item2-title">活动名称：植树在行动！</p>
-          </td></tr>
-          <tr><td><p id="item2-description">活动描述：植树在行动，需要您的参与！本次树苗不多，想要参加的同学尽快了！</p></td></tr>
-          <tr><td>
-            <p id="item2-where">活动地点:植物园</p>
-          </td></tr>
-          <tr><td>
-            <p id="item2-when">活动时间：2012年9月20日</p>
-          </td></tr>
-          <tr><td>
-            <p id="item2-no">活动人数：80-120</p>
-          </td></tr>
-        <tr><td><p id="item2-time">n天前</p>  
-          <a class="pull-right" id="item2-details" onclick="ChatShow();">查看详情(220)&nbsp;&nbsp;&nbsp;</a>
-        </td></tr>
+          <tr>
+            <td>
+              <img id="item2-pic" src="Pictures/资环学院.jpg">
+              <a href="#" id="item2-name" style=" color:#ff7500;position:relative;bottom:14px;">
+                &nbsp;资源与环境学院
+              </a> 
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <p id="item2-title">活动名称：植树在行动！</p>
+            </td>
+          </tr>
+          
+          <tr>
+            <td>
+              <p id="item2-description">活动描述：植树在行动，需要您的参与！本次树苗不多，想要参加的同学尽快了！</p>
+            </td>
+          </tr>
+          
+          <tr>
+            <td>
+              <p id="item2-where">活动地点:植物园</p>
+            </td>
+          </tr>
+          
+          <tr>
+            <td>
+              <p id="item2-when">活动时间：2012年9月20日</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p id="item2-no">活动人数：80-120</p>
+            </td>
+          </tr>
+          
+          <tr>
+            <td>
+              <p id="item2-time">n天前</p>  
+              <a class="pull-right" id="item2-details" onclick="ChatShow();">查看详情(220)&nbsp;&nbsp;&nbsp;</a>
+            </td>
+          </tr>
       </table>
 
-      <table>
-          <tr><td></br><img id="item1-pic" src="Pictures/艺术学院.jpg"><a href="#" id="item1-name" style="color:#ff7500;position:relative;bottom:14px;">&nbsp;艺术与设计学院</a> </td>
-            <tr><td>
-            <p id="item1-title">活动名称：艺术节比赛报名！</p>
-          </td></tr>
-          <tr><td>
-            <p id="item1-description">活动描述：第九届校园艺术节将于9月20日盛大开幕，本次艺术节包括了绘画比赛，海报设计大赛，K歌大赛等项目，快来报名参加吧！</p>
-          </td></tr>
-          <tr><td>
-            <p id="item1-where">活动地点：学校</p>
-          </td></tr>
-          <tr><td>
-            <p id="item1-when">活动时间：2012年9月20日--10月20日</p>
-          </td></tr>
-          <tr><td>
-            <p id="item1-no">活动人数：不限</p>
-          </td></tr>
-        <tr><td><p id="item1-time">n天前</p>  
-          <a class="pull-right" id="item1-details" onclick="ChatShow();">查看详情(3)&nbsp;&nbsp;&nbsp;</a>
-        </td></tr>
-      </table>
-      <table>
-        <tr><td></br><img id="item3-pic" src="Pictures/软件学院.jpg">
-          <a href="#" id="item3-name" style="color:#ff7500;position:relative;bottom:14px;">&nbsp;软件学院</a> 
-        </td></tr>
-        <tr><td>
-            <p id="item3-title">活动名称：C语言编程大赛！</p>
-          </td></tr>
-          <tr><td><p id="item3-description">活动描述：第五届C语言编程大赛火热报名啦！前10名均有奖金！</p></td></tr>
-          <tr><td>
-            <p id="item3-where">活动地点：软件学院实验室</p>
-          </td></tr>
-          <tr><td>
-            <p id="item3-when">活动时间：2012年9月25日--10月10日</p>
-          </td></tr>
-          <tr><td>
-            <p id="item3-no">活动人数：不限</p>
-          </td></tr>
-        <tr><td><p>n天前</p>  
-          <a class="pull-right" id="item3-details" onclick="ChatShow();">查看详情(20)&nbsp;&nbsp;&nbsp;</a>
-        </td></tr>
-      </table>
       </DIV>
 
 <!-- chatwindow 下面的东西是左边的聊天窗，内容也在chatwindow.js里--> 
@@ -291,6 +274,56 @@
 
 
       //此处放模板
+      //有右下角活动列表的模板
+<script type="text/template" id="tpl-activityList">
+<table>
+          <tr>
+            <td>
+              <img id="item2-pic" src="{{creator_photo}}">
+              <a href="#" id="item2-name" style=" color:#ff7500;position:relative;bottom:14px;">
+                &nbsp;{{creator_name}}
+              </a> 
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <p id="item2-title">活动名称：{{title}}</p>
+            </td>
+          </tr>
+          
+          <tr>
+            <td>
+              <p id="item2-description">活动描述：{{content}}</p>
+            </td>
+          </tr>
+          
+          <tr>
+            <td>
+              <p id="item2-where">活动地点:{{address_line}}</p>
+            </td>
+          </tr>
+          
+          <tr>
+            <td>
+              <p id="item2-when">活动时间：{{time_start}} -- {{time_end}}</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p id="item2-no">活动人数：80-120</p>
+            </td>
+          </tr>
+          
+          <tr>
+            <td>
+              <p id="item2-time">n天前</p>  
+              <a class="pull-right" id="item2-details" onclick="ChatShow();">查看详情(220)&nbsp;&nbsp;&nbsp;</a>
+            </td>
+          </tr>
+      </table>
+</script>
+
 //marker的infoWindow
 <script type="text/template" id="tpl-infoWindow">
     <div>

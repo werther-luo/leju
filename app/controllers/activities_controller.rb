@@ -8,8 +8,7 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    #暂时使用第一个User替代
-    current_user = User.first
+    # 由经纬度查询地址名称，和地址
     @addressLine = getAddressLine(params[:lat], params[:lng])
     @addressSub = getAddress(params[:lat], params[:lng])
     puts "-----------before build activity  safsfa"
@@ -23,8 +22,6 @@ class ActivitiesController < ApplicationController
     @activity[:pcount] = params[:peopleNum]
     @activity[:content] = params[:content]
     @activity[:back_up] = params[:ps]
-    # @address[:lat] = params[:lat]
-    # @address[:lng] = params[:lng]
     @activity[:GUID] = 0;
     @activity[:GUID_created_at] = 0;
     if @activity.save!
@@ -63,9 +60,12 @@ class ActivitiesController < ApplicationController
     puts "------lng:"+params[:lng]
     @neighborActs = Activity.getNeighbor(params[:lat].to_f,params[:lng].to_f,0.01)
     puts "------getNeighbor success"
+    puts "------测试current_user：" + current_user.name + "./" + current_user.email
     results = Hash.new
     results[:adjActs] = objs_to_hash(@neighborActs)
-    results[:relaActs] = objs_to_hash(@neighborActs)
+    results[:relaActs] = objs_to_hash(current_user.followed_acts)
+    results[:ownActs] = objs_to_hash(current_user.activities)
+    puts results.to_json
     # respond_to do |format|
       respond_with results.to_json
     # end
@@ -130,6 +130,7 @@ class ActivitiesController < ApplicationController
       act_hash[:created_at] = var.created_at 
       act_hash[:creator_id] = var.user_id
       act_hash[:creator_name] = User.find(var.user_id).name
+      act_hash[:creator_photo] = User.find(var.user_id).photo.url(:thumb)
       act_hash[:lat] = var.address.lat
       act_hash[:lng] = var.address.lng
       acts << act_hash
@@ -157,5 +158,6 @@ class ActivitiesController < ApplicationController
       client.publish('/activity/public', 'acts' => results.to_json)
     }
   end
+
 
 end

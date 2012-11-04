@@ -53,12 +53,16 @@ $(function () {
                     var activityList = eval(data); //此处待定
                     var adjecntActivities = activityList.adjActs, //取到地图活动 数组
                         relativeActivities = activityList.relaActs,   //取到相关活动 数组
+                        ownActivities = activityList.ownActs,   //取到参加的活动
                         i = 0,
                         l = adjecntActivities.length,
-                        template = $('#tpl-infoWindow').html();   //用户渲染infoWindow的函数
+                        l2 = ownActivities.length,
+                        // l3 = 
+                        template = $('#tpl-infoWindow').html(),   //用户渲染infoWindow的函数
+                        template2 = $('#tpl-activityList').html();
 
-
-                    for (; i < l; i++) {
+                    //在地图上添加marker
+                    for (i = 0; i < l; i++) {
                         var infoWindow = Mustache.to_html(template, 
                             {
                                 time_start: adjecntActivities[i].time_start,
@@ -75,6 +79,24 @@ $(function () {
                             }
                         });
                     }
+
+                    //在右下角显示活动列表
+                    for (i = 0; i < l2; i++) {
+                        var activityListWindow = Mustache.to_html(template2, 
+                            {
+                                time_start: ownActivities[i].time_start,
+                                content: ownActivities[i].content,
+                                creator_name: ownActivities[i].creator_name,
+                                time_end: ownActivities[i].time_end,
+                                title: ownActivities[i].title,
+                                address_line: ownActivities[i].address_line,
+                                creator_photo: "http://localhost:3000/" + ownActivities[i].creator_photo
+                            });
+
+                        // console.log(activityListWindow);
+                        $(activityListWindow).appendTo($(listHeader));
+                    }
+
 
                 },
                 dataType = 'JSON';
@@ -136,14 +158,6 @@ $(function () {
                     $modal_a.trigger('show');
 
                     $('#activity-submit').click(function () {
-                        // alert($('#activity-name-input').val());
-                        // alert($('#date-input').val());
-                        // alert($('#activity-type-input').val());
-                        // alert($('#activity-number-input').val());
-                        // alert($('#activity-description-input').val());
-                        // alert(e.latLng.lat() + ', ' + e.latLng.lng());
-
-
                         var url = 'activities',
                             data = {
                                 title : $('#activity-name-input').val(),
