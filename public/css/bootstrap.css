@@ -2491,7 +2491,7 @@ input[type="submit"].btn.btn-mini {
 }
 .nav {
   margin-left: 0;
-  margin-bottom: 18px;
+  margin-bottom: 8px;
   list-style: none;
 }
 .nav > li > a {
@@ -2570,8 +2570,8 @@ input[type="submit"].btn.btn-mini {
 }
 .nav-tabs > li > a,
 .nav-pills > li > a {
-  padding-right: 12px;
-  padding-left: 12px;
+  padding-right: 10px;
+  padding-left: 10px;
   margin-right: 2px;
   line-height: 14px;
 }
@@ -2595,7 +2595,7 @@ input[type="submit"].btn.btn-mini {
 }
 .nav-tabs > .active > a,
 .nav-tabs > .active > a:hover {
-  color: #555555;
+  color: #444444;
   background-color: #ffffff;
   border: 1px solid #ddd;
   border-bottom-color: transparent;
@@ -2613,7 +2613,7 @@ input[type="submit"].btn.btn-mini {
 .nav-pills > .active > a,
 .nav-pills > .active > a:hover {
   color: #ffffff;
-  background-color: #0088cc;
+  background-color: #333333;
 }
 .nav-stacked > li {
   float: none;
@@ -5087,3 +5087,21 @@ ul.iStu12 li.images {position:absolute; left:112px; top:0; overflow:hidden; z-in
 ul.iStu12 li.images div.slide {position:absolute; left:0; top:0;}
 ul.iStu12 li.images img {display:block; float:left;}
 ul.iStu12 li.caption {position:absolute; bottom:0; left:42px; font:bold 12px/25px arial,sans-serif; color:#888;}
+
+/* 搜地点隐藏框 */
+#box
+{Z-INDEX: 8000;POSITION: fixed;bottom:0px;width:200px;word-break:break-all;overflow:hidden; cursor:pointer}
+
+/* foot */
+.foot {
+    margin-top: 35px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+.foot span {
+    padding: 0 18px;
+}
+.foot .footBox {
+    margin: 0 auto;
+    width: 800px;
+}

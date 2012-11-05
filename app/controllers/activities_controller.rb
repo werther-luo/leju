@@ -44,6 +44,9 @@ class ActivitiesController < ApplicationController
       puts "------------insert error"
     end
 
+    # return_val = "success"
+    # respond_with return_val.to_json
+
   	# @activity = current_user.activities.build(params[:activity])
    #  @tag = Tag.find(params[:tag][:id])
    #  if @activity.save
@@ -60,7 +63,7 @@ class ActivitiesController < ApplicationController
     # @neighborActs = Activity.getNeighbor(paramms[:lat],params[:lng],0.01)
     puts "------lat:"+params[:lat]
     puts "------lng:"+params[:lng]
-    @neighborActs = Activity.getNeighbor(params[:lat].to_f,params[:lng].to_f,0.01)
+    @neighborActs = Activity.getNeighbor(params[:lat].to_f,params[:lng].to_f,1)
     puts "------getNeighbor success"
     puts "------测试current_user：" + current_user.name + "./" + current_user.email
     results = Hash.new
@@ -169,13 +172,14 @@ class ActivitiesController < ApplicationController
       # 开始publish
       @creator_followers.each do |user|
         puts "-------start publish to " + user.name + "channel"
-        client.publish("/newact/#{user.name}", 'act' => act)
+        puts "-------json:" + obj_to_hash(act).to_json
+        client.publish("/newact/#{user.id}", 'act' => obj_to_hash(act).to_json)
         puts "-------success publish to " + user.name + "channel"
       end
 
       @neighbor_singed_users.each do |user|
         puts "-------start publish to " + user.name + "channel"
-        client.publish("/newact/#{user.name}", 'act' => act)
+        client.publish("/newact/#{user.id}", 'act' => obj_to_hash(act).to_json)
         puts "-------success publish to " + user.name + "channel"
       end
       puts "--------publish successful"
@@ -183,5 +187,25 @@ class ActivitiesController < ApplicationController
     }
   end
 
+
+def obj_to_hash(var)
+  act_hash = Hash.new
+  act_hash[:id] = var.id
+  act_hash[:title] = var.title
+  act_hash[:time_start] = var.time_start
+  act_hash[:time_end] = var.time_end
+  act_hash[:content] = var.content 
+  act_hash[:address] = var.address.address 
+  act_hash[:address_line] = var.address.addressLine
+  act_hash[:ps] = var.back_up 
+  act_hash[:state] = var.state 
+  act_hash[:created_at] = var.created_at 
+  act_hash[:creator_id] = var.user_id
+  act_hash[:creator_name] = User.find(var.user_id).name
+  act_hash[:creator_photo] = User.find(var.user_id).photo.url(:thumb)
+  act_hash[:lat] = var.address.lat
+  act_hash[:lng] = var.address.lng
+  act_hash
+end
 
 end
