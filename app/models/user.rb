@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "52x52>" }
   has_secure_password
   has_many :microposts, dependent: :destroy
+  has_many :messages, dependent: :destroy
   has_many :activities, dependent: :destroy
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed

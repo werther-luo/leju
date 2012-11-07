@@ -1,5 +1,9 @@
 SampleApp::Application.routes.draw do
   
+  get "message/index"
+
+  get "message/new"
+
   get "photos/new"
 
   get "photos/destroy"
@@ -18,7 +22,7 @@ SampleApp::Application.routes.draw do
 
   # get "activities/show"
   resources :photos
-
+  # resources :message
   resources :users do
     member do
       get :following, :followers
@@ -31,7 +35,7 @@ SampleApp::Application.routes.draw do
   resources :user_ac_relas, only: [:create, :destroy]
   resources :activities, only: [:new, :create, :destroy,:index]
 
-  root to: 'static_pages#home'
+  root to: 'static_pages#map'
 
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
@@ -44,6 +48,8 @@ SampleApp::Application.routes.draw do
   match '/activities/:id', to: 'activities#show'
   match '/map', to: 'static_pages#map'
   match '/login', to: 'static_pages#login'
+  match '/message/index', to: 'message#index', via: :get 
+  match '/message/new', to: 'message#create', via: :post
   # match '/jiepan', to: 'static_pages#jiepan'
   # The priority is based upon order of creation:
   # first created -> highest priority.

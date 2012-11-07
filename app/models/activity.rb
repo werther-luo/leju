@@ -23,6 +23,7 @@ class Activity < ActiveRecord::Base
   belongs_to :user
   has_one :address
   has_many :microposts, dependent: :destroy
+  has_many :messages, dependent: :destroy
   # has_many :users
   has_many :reverse_user_ac_relas, 	foreign_key: "activity_id",
   									class_name:  "UserAcRela",

@@ -32,6 +32,7 @@ class StaticPagesController < ApplicationController
     # @activity = current_user.activities.build
     # @activities = current_user.feed_for_activity.paginate(page: params[:page])
     @current_user = current_user
+    @host_ip = local_ip
   end
 
   def login

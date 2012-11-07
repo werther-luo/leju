@@ -72,7 +72,7 @@ class ActivitiesController < ApplicationController
     results[:ownActs] = objs_to_hash(current_user.activities)
     # puts results.to_json
     # respond_to do |format|
-      respond_with results.to_json
+    respond_with results.to_json
     # end
 
   end
@@ -139,6 +139,7 @@ class ActivitiesController < ApplicationController
       act_hash[:creator_photo] = User.find(var.user_id).photo.url(:thumb)
       act_hash[:lat] = var.address.lat
       act_hash[:lng] = var.address.lng
+      # act_hash[:type] = var.tags[0].content
       acts << act_hash
     end
     acts
@@ -188,24 +189,24 @@ class ActivitiesController < ApplicationController
   end
 
 
-def obj_to_hash(var)
-  act_hash = Hash.new
-  act_hash[:id] = var.id
-  act_hash[:title] = var.title
-  act_hash[:time_start] = var.time_start
-  act_hash[:time_end] = var.time_end
-  act_hash[:content] = var.content 
-  act_hash[:address] = var.address.address 
-  act_hash[:address_line] = var.address.addressLine
-  act_hash[:ps] = var.back_up 
-  act_hash[:state] = var.state 
-  act_hash[:created_at] = var.created_at 
-  act_hash[:creator_id] = var.user_id
-  act_hash[:creator_name] = User.find(var.user_id).name
-  act_hash[:creator_photo] = User.find(var.user_id).photo.url(:thumb)
-  act_hash[:lat] = var.address.lat
-  act_hash[:lng] = var.address.lng
-  act_hash
-end
+  def obj_to_hash(var)
+    act_hash = Hash.new
+    act_hash[:id] = var.id
+    act_hash[:title] = var.title
+    act_hash[:time_start] = var.time_start
+    act_hash[:time_end] = var.time_end
+    act_hash[:content] = var.content 
+    act_hash[:address] = var.address.address 
+    act_hash[:address_line] = var.address.addressLine
+    act_hash[:ps] = var.back_up 
+    act_hash[:state] = var.state 
+    act_hash[:created_at] = var.created_at 
+    act_hash[:creator_id] = var.user_id
+    act_hash[:creator_name] = User.find(var.user_id).name
+    act_hash[:creator_photo] = User.find(var.user_id).photo.url(:thumb)
+    act_hash[:lat] = var.address.lat
+    act_hash[:lng] = var.address.lng
+    act_hash
+  end
 
 end

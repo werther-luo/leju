@@ -8,15 +8,19 @@
 //当html页面加载完毕后再执行该匿名函数
 $(function () {
     var template = $('#tpl-infoWindow').html(), //用户渲染infoWindow的函数
-        template2 = $('#tpl-activityList').html();
+        template2 = $('#tpl-activityList').html(),	//用于渲染右下角活动列表
+		template3 = $('#tpl-chatWindow').html(),	//用于渲染聊天框
+		template4 = $('#tpl-chatItem').html(),	//用户渲染聊天条目
+		basePath = $('#host_ip').val();
 
 
     // Create a new client to connect to Faye
-    var client = new Faye.Client('http://222.19.212.41:9292/faye');
+    var client = new Faye.Client('http://' + basePath + ':9292/faye');
 
     //测试取rails_tag的用户信息
     var current_user_id = document.getElementById("current_user_id");
     console.log("---------current_user:" + current_user_id.value);
+	
 
     //初始化‘新建活动’弹窗所需要的变量
     var $modal_a = $('div.modal_a').omniWindow();
@@ -70,16 +74,30 @@ $(function () {
 
                     var activityList = eval(data); //此处待定
                     var adjecntActivities = activityList.adjActs, //取到地图活动 数组
-                        relativeActivities = activityList.relaActs, //取到相关活动 数组
-                        ownActivities = activityList.ownActs, //取到参加的活动
+                        relativeActivities = activityList.relaActs, //取到用户参加的活动 数组
+                        ownActivities = activityList.ownActs, //取到用户创建的活动
                         i = 0,
                         l = adjecntActivities.length,
                         l2 = ownActivities.length;
-                    l3 = relativeActivities.length;
-                    console.log("There are " + l3);
+                    	l3 = relativeActivities.length,
+						activityType = '',
+						markerIcon = '';
 
                     //在地图上添加marker
                     for (i = 0; i < l; i++) {
+						// TODO 根据活动类型确定marker的颜色
+						// activityType = adjecntActivities[i].type;
+						switch(activityType){
+							case '': markerIcon = '';
+							break;
+							case '': markerIcon = '';
+							break;
+							case '': markerIcon = '';
+							break;
+							case '': markerIcon = '';
+							break;	
+						}
+
                         var infoWindow = Mustache.to_html(template,
                             {
                                 time_start:adjecntActivities[i].time_start,
@@ -92,6 +110,7 @@ $(function () {
                             lat:adjecntActivities[i].lat,
                             lng:adjecntActivities[i].lng,
                             title:adjecntActivities[i].title,
+							icon: markerIcon,
                             infoWindow:{
                                 content:infoWindow
                             }
@@ -110,10 +129,10 @@ $(function () {
                                 time_end:ownActivities[i].time_end,
                                 title:ownActivities[i].title,
                                 address_line:ownActivities[i].address_line,
-                                creator_photo:"http://localhost:3000/" + ownActivities[i].creator_photo
+								id: ownActivities[i].id,
+                                creator_photo:"http://" + basePath + ":3000/" + ownActivities[i].creator_photo
                             });
 
-                        // console.log(activityListWindow);
                         $(activityListWindow).appendTo($('#tab1'));
                     }
                     //我参加的活动
@@ -126,14 +145,13 @@ $(function () {
                                 time_end:relativeActivities[i].time_end,
                                 title:relativeActivities[i].title,
                                 address_line:relativeActivities[i].address_line,
-                                creator_photo:"http://localhost:3000/" + relativeActivities[i].creator_photo
+								id: ownActivities[i].id,
+                                creator_photo:"http://" + basePath + ":3000/" + relativeActivities[i].creator_photo
                             });
 
-                        console.log(activityListWindow);
+                        // console.log(activityListWindow);
                         $(activityListWindow).appendTo($('#tab2'));
                     }
-
-
                 },
                 dataType = 'JSON';
 
@@ -145,11 +163,11 @@ $(function () {
                 dataType:dataType
             });
 
-
+			
             //开使监听广播，通道名称为“/newact/user_id”
             channel = "/newact/" + current_user_id.value;
             console.log("---------channel:" + channel);
-            var public_subscription = client.subscribe(channel, function (data) {
+            client.subscribe(channel, function (data) {
                 // alert("--" + data.act);
                 var newActivity = eval('(' + data.act + ')');
                 // alert("--" + newActivity.time_start);
@@ -175,9 +193,7 @@ $(function () {
             $('#attend-activity').live('click', function(e) {
                 e.preventDefault();
                 console.log('clicked attend button');
-                var activity_id = $(this).parent().find('input').val();
-                console.log("Click the activity " + activity_id );
-
+                var activity_id = $(this).parent().find('input').val(),
                     url = 'user_ac_relas',
                     data = {
                         activity_id:activity_id
@@ -185,25 +201,27 @@ $(function () {
                     success = function (data) {
                         //把新参加的活动显示到右下角列表中去
                         var activity = eval(data); //此处待定
-
                         activityWindow = Mustache.to_html(template2,
                             {
                                 time_start: activity.time_start,
-                                content: activitycontent,
+                                content: activity.content,
                                 creator_name: activity.creator_name,
                                 time_end: activity.time_end,
                                 title: activity.title,
                                 address_line: activity.address_line,
-                                creator_photo:"http://localhost:3000/" + activity.creator_photo
+								id: activity.id,
+                                creator_photo: "http://" + basePath + ":3000/" + activity.creator_photo
                             });
 
                         $(activityWindow).appendTo($('#tab2'));
                         alert("您已经成功参加该活动，点击右下角可以查看");
 
-                        //把这个活动的infoWindow中参加按钮改成已参加
+                        // TODO 把这个活动的infoWindow中参加按钮改成已参加
 //                        $
                     },
                     dataType = 'JSON';
+
+
 
                 $.ajax({
                     type:'POST',
@@ -212,6 +230,96 @@ $(function () {
                     success:success,
                     dataType:dataType
                 });
+
+            });
+			
+			var activity_id = '';
+			//点击查看详情之后出现聊天框
+            $('#chat-open').live('click', function(e) {
+                e.preventDefault();
+                console.log('clicked chat button');
+                var activityElement = $(this).parent().find('input'),
+					activity_id = activityElement.val(),
+                    url = 'message/index',
+                    data = {
+                        activity_id: activity_id
+                    },
+                    success = function (data) {
+						//成功获取聊天记录之后弹出聊天框
+				        var chatWindow = Mustache.to_html(template3,{
+		                	id: activity_id
+		                });
+					
+						$(chatWindow).appendTo($('#chat-place'));
+						
+						//TODO 显示历史聊天记录
+                    },
+                    dataType = 'JSON';
+				
+				console.log(activity_id);
+				
+			    $.ajax({
+                	type:'GET',
+                    url:url,
+                    data:data,
+                    success:success,
+                    dataType:dataType
+                });
+				
+						
+				//接受聊天的广播
+				client.subscribe('/chatmsg/' + activity_id, function( data ){
+					console.log("subscribe the message." + data.comment);
+					//把聊天内容写入
+                    var chatItem = Mustache.to_html(template4,{
+                            user_name: current_user_id.value,
+							comment: data.comment
+                    });
+					var placeID = '#place' + activity_id;
+					var commentBody = $(placeID).parent().find('table#message');
+					$(chatItem).appendTo(commentBody);	
+				});	
+				
+				//聊天部分
+				$('#chat-comment').live('click', function(e){
+					e.preventDefault();
+					console.log("Just clicked comment button on activity :" + activity_id);
+					
+					var commentElemment = $(this).parent().find('textarea'),
+						comment = commentElemment.val();
+					
+					if(comment.length > 0){
+						//用户发言，将说的话发到服务器端
+						var url = 'message/new',
+							data = {
+								message: comment,
+								activity_id: activity_id
+							},
+							success = function(data){
+						
+							},
+							dataType = 'JSON';
+					
+						$.ajax({
+							type: 'POST',
+							url: url,
+							data: data,
+							success: success,
+							dataType: dataType
+						});
+					
+						commentElemment.val("");
+						
+						//把聊天内容进行广播
+						var channal = '/chatmsg/' + activity_id;
+						console.log("Ready to publis a message on " + activity_id + " of " + channal + '|' + current_user_id.value + "|" + comment);
+			            client.publish(channal, {
+			            	user_name: current_user_id.value,
+							comment: comment
+			            });		
+						console.log("Succeed in receiving a message.");        
+					}		
+				})
 
             });
 

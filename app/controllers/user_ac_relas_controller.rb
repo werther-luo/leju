@@ -1,5 +1,7 @@
+# coding = utf-8
 class UserAcRelasController < ApplicationController
-	require "json"
+  require 'net/http'
+  require "json"
 	before_filter :signed_in_user
 	respond_to :html, :js, :json
 
@@ -15,14 +17,19 @@ class UserAcRelasController < ApplicationController
 		# 	format.html {redirect_to activities_path+"/#{@activity.id}"}
 		# 	format.js
 		# end
+		puts "-------enter user_ac_relas create method"
 		@user = current_user
-		@activity = Activity.find(params[:activity_id])
-		puts "-------" + @activity
-		puts "-------activity_id:" + params[:activity_id]
-		@user.follow_for_activity!(@activity)
+		puts "-------geted activity_id:" + params[:activity_id]
+		@act = Activity.find(params[:activity_id])
+		puts "-------finded id:" + @act.id.to_s
+		@user.follow_for_activity!(@act)
 		puts "-------success join activity"
-		puts "-------joined activity:" + @activity.id
-		respond_with obj_to_hash(@activity).to_json
+		puts "-------joined activity:" + @act.id.to_s
+
+    #respond_with obj_to_hash(@act).to_json
+    respond_to do |format|
+      format.json { render :json => obj_to_hash(@act) }
+    end
 	end
 
 	def destroy
