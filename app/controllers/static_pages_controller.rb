@@ -38,6 +38,14 @@ class StaticPagesController < ApplicationController
   def login
     
   end
+  
+  def register
+    @user = User.new
+  end
+  
+  def setting
+    
+  end
 
   def jiepan
     # puts "get jiepan"

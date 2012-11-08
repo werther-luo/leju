@@ -48,8 +48,11 @@ SampleApp::Application.routes.draw do
   match '/activities/:id', to: 'activities#show'
   match '/map', to: 'static_pages#map'
   match '/login', to: 'static_pages#login'
+  match '/register', to: 'static_pages#register'
+  match '/user_setting', to: 'static_pages#setting'
   match '/message/index', to: 'message#index', via: :get 
   match '/message/new', to: 'message#create', via: :post
+  
   # match '/jiepan', to: 'static_pages#jiepan'
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -10,7 +10,8 @@ class MessageController < ApplicationController
     puts "--------enter index method"
     @activity_id = params[:activity_id]
     puts "--------geted activity_id:" + @activity_id.to_s
-    @messages = Message.find_by_activity_id(@activity_id)
+    @messages = Activity.find(@activity_id).messages
+    puts @messages.to_json
     
     #服务器不再监听，也不再广播，只是进行基本的数据存储
     #开始监听这个活动

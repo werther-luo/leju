@@ -68,6 +68,15 @@ class ActivitiesController < ApplicationController
     puts "------lat:"+params[:lat]
     puts "------lng:"+params[:lng]
     @neighborActs = Activity.getNeighbor(params[:lat].to_f,params[:lng].to_f,1)
+    # puts @neighborActs
+    # puts "---------------------------------------"
+    # 周围的活动不包括该用户已经参加的
+    @neighborActs = @neighborActs - current_user.followed_acts
+    # puts @neighborActs
+    # 周围的活动也不包括用户自己创建的
+    @neighborActs = @neighborActs - current_user.activities
+    # puts "---------------------------------------"
+    puts @neighborActs
     puts "------getNeighbor success"
     puts "------测试current_user：" + current_user.name + "./" + current_user.email
     results = Hash.new
@@ -77,7 +86,7 @@ class ActivitiesController < ApplicationController
     # puts results.to_json
     # respond_to do |format|
 
-    puts results.to_json
+    # puts results.to_json
     respond_with results.to_json
     # end
 
