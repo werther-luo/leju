@@ -26,6 +26,7 @@ class ActivitiesController < ApplicationController
     @activity[:back_up] = params[:ps]
     @activity[:GUID] = 0;
     @activity[:GUID_created_at] = 0;
+
     if @activity.save!
       puts "------------insert successful"
       @address = @activity.build_address()
@@ -35,6 +36,9 @@ class ActivitiesController < ApplicationController
       @address[:lng] = params[:lng]
       if @address.save!
         puts "-----------adress saved successful, and activity created successful"
+        if @activity.tag!(@tag)
+          puts "-----------teaged!"
+        end
         #成功创建活动，下面开始广播这个新的活动
         publish_new_act(@activity)
       else
@@ -72,6 +76,8 @@ class ActivitiesController < ApplicationController
     results[:ownActs] = objs_to_hash(current_user.activities)
     # puts results.to_json
     # respond_to do |format|
+
+    puts results.to_json
     respond_with results.to_json
     # end
 
@@ -139,7 +145,7 @@ class ActivitiesController < ApplicationController
       act_hash[:creator_photo] = User.find(var.user_id).photo.url(:thumb)
       act_hash[:lat] = var.address.lat
       act_hash[:lng] = var.address.lng
-      # act_hash[:type] = var.tags[0].content
+      act_hash[:type] = var.tags[0].content
       acts << act_hash
     end
     acts
@@ -206,6 +212,7 @@ class ActivitiesController < ApplicationController
     act_hash[:creator_photo] = User.find(var.user_id).photo.url(:thumb)
     act_hash[:lat] = var.address.lat
     act_hash[:lng] = var.address.lng
+    act_hash[:type] = var.tags[0].content
     act_hash
   end
 

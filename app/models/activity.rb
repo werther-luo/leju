@@ -21,7 +21,7 @@ class Activity < ActiveRecord::Base
 
 
   belongs_to :user
-  has_one :address
+  has_one :address, dependent: :destroy
   has_many :microposts, dependent: :destroy
   has_many :messages, dependent: :destroy
   # has_many :users

@@ -12,7 +12,8 @@ $(function () {
 		template3 = $('#tpl-chatWindow').html(),	//用于渲染聊天框
 		template4 = $('#tpl-chatItem').html(),	//用户渲染聊天条目
 		basePath = $('#host_ip').val();
-
+	
+	console.log("base path is:" + basePath);
 
     // Create a new client to connect to Faye
     var client = new Faye.Client('http://' + basePath + ':9292/faye');
@@ -20,6 +21,8 @@ $(function () {
     //测试取rails_tag的用户信息
     var current_user_id = document.getElementById("current_user_id");
     console.log("---------current_user:" + current_user_id.value);
+    var current_user_name = document.getElementById("current_user_name");
+    console.log("---------current_user:" + current_user_name.value);
 	
 
     //初始化‘新建活动’弹窗所需要的变量
@@ -86,15 +89,17 @@ $(function () {
                     //在地图上添加marker
                     for (i = 0; i < l; i++) {
 						// TODO 根据活动类型确定marker的颜色
-						// activityType = adjecntActivities[i].type;
+						activityType = adjecntActivities[i].type;
 						switch(activityType){
-							case '': markerIcon = '';
+							case '电子竞技': markerIcon = 'http://www.google.com/intl/en_us/mapfiles/ms/micons/yellow-dot.png';
 							break;
-							case '': markerIcon = '';
+							case '美食': markerIcon = 'http://www.google.com/intl/en_us/mapfiles/ms/micons/blue-dot.png';
 							break;
-							case '': markerIcon = '';
+							case '运动': markerIcon = 'http://www.google.com/intl/en_us/mapfiles/ms/micons/green-dot.png';
 							break;
-							case '': markerIcon = '';
+							case '旅行': markerIcon = 'http://www.google.com/intl/en_us/mapfiles/ms/micons/red-dot.png';
+							break;	
+							case '文艺': markerIcon = 'http://www.google.com/intl/en_us/mapfiles/ms/micons/black-dot.png';
 							break;	
 						}
 
@@ -266,13 +271,17 @@ $(function () {
                     dataType:dataType
                 });
 				
+				//监听关闭聊天框 
+				// $('#chat-close').live('click', function(e) {
+				// 	
+				// };
 						
 				//接受聊天的广播
 				client.subscribe('/chatmsg/' + activity_id, function( data ){
 					console.log("subscribe the message." + data.comment);
 					//把聊天内容写入
                     var chatItem = Mustache.to_html(template4,{
-                            user_name: current_user_id.value,
+                            user_name: current_user_name.value,
 							comment: data.comment
                     });
 					var placeID = '#place' + activity_id;
@@ -314,7 +323,7 @@ $(function () {
 						var channal = '/chatmsg/' + activity_id;
 						console.log("Ready to publis a message on " + activity_id + " of " + channal + '|' + current_user_id.value + "|" + comment);
 			            client.publish(channal, {
-			            	user_name: current_user_id.value,
+			            	user_name: current_user_name.value,
 							comment: comment
 			            });		
 						console.log("Succeed in receiving a message.");        

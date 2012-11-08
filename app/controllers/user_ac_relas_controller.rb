@@ -66,6 +66,7 @@ class UserAcRelasController < ApplicationController
 	  act_hash[:creator_photo] = User.find(var.user_id).photo.url(:thumb)
 	  act_hash[:lat] = var.address.lat
 	  act_hash[:lng] = var.address.lng
+    act_hash[:type] = var.tags[0].content
 	  act_hash
 	end
 end

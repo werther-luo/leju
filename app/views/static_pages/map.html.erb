@@ -52,7 +52,14 @@
 
 </head>
 <body>
-
+	<!--此处放置隐藏表单-->
+    <input type="hidden" value="<%=@current_user.id%>" id="current_user_id" name="current_user_id">
+    <input type="hidden" value="<%=@current_user.name%>" id="current_user_name" name="current_user_name">
+	<input type="hidden" value="<%=@host_ip%>" id="host_ip" name="host_ip">
+	
+	
+	
+	
 <!-- Container for an overlay: 这个div是用来做发布活动还有乐聚猜弹出的遮罩的-->
 <div class="ow-overlay ow-closed"></div>
 
@@ -71,10 +78,11 @@
                        style="position:relative;left:30px;"/><a style="position:relative;left:60px;">*</a></li>
         <li>活动类型
             <select id="type-input" class="input-xlarge" style="position:relative;left:30px;">
-                <option value="旅游">旅游</option>
-                <option value="体育">体育</option>
-                <option value="吃货">吃货</option>
-                <option value="电子竞争">电子竞争</option>
+                <option value="运动">运动</option>
+                <option value="电子竞技">电子竞技</option>
+                <option value="美食">美食</option>
+                <option value="旅行">旅行</option>
+				<option value="文艺">文艺</option>
             </select>
         </li>
         <li>活动人数<input type="text" id="activity-number-input" class="input-xlarge" placeholder="请输入活动人数"
@@ -138,8 +146,7 @@
                     <li><%= link_to "退出", signout_path, method: "delete" %></li>
 
                     <li><a href="#">用户名:<%=@current_user.name%></a></li>
-                    <input type="hidden" value="<%=@current_user.id%>" id="current_user_id" name="current_user_id">
-					<input type="hidden" value="<%=@host_ip%>" id="host_ip" name="host_ip">
+                    
 
                 </ul>
 
@@ -186,92 +193,26 @@
         </ul>
         <div class="tab-content">
             <div class="tab-pane active" id="tab1">
-                <table>
-                    <tr><td><img id="item2-pic" src="Pictures/资环学院.jpg">
-                        <a href="#" id="item2-name" style="color:#ff7500;position:relative;bottom:14px;">&nbsp;资源与环境学院</a>
-                    </td></tr>
-                    <tr><td>
-                        <p id="item2-title">活动名称：植树在行动！</p>
-                    </td></tr>
-                    <tr><td><p id="item2-description">活动描述：植树在行动，需要您的参与！本次树苗不多，想要参加的同学尽快了！</p></td></tr>
-                    <tr><td>
-                        <p id="item2-where">活动地点:植物园</p>
-                    </td></tr>
-                    <tr><td>
-                        <p id="item2-when">活动时间：2012年9月20日</p>
-                    </td></tr>
-                    <tr><td>
-                        <p id="item2-no">活动人数：80-120</p>
-                    </td></tr>
-                    <tr>
-                        <td>
-                            <p id="item2-time">n天前</p>
-                            <button class="btn btn-mini pull-right" type="button" onclick="ChatShow();" id="item2-details" ><i class="icon-zoom-in">
-                            </i>查看详情
-                            </button>
-                        </td>
-                    </tr>
-                </table>
+                <!--此处用来挂载我创建的活动-->
 
             </div>
             <div class="tab-pane" id="tab2">
-                <table>
-                    <tr><td><img id="item1-pic" src="Pictures/艺术学院.jpg"><a href="#" id="item1-name" style="color:#ff7500;position:relative;bottom:14px;">&nbsp;艺术与设计学院</a> </td>
-                    <tr><td>
-                        <p id="item1-title">活动名称：艺术节比赛报名！</p>
-                    </td></tr>
-                    <tr><td>
-                        <p id="item1-description">活动描述：第九届校园艺术节将于9月20日盛大开幕，本次艺术节包括了绘画比赛，海报设计大赛，K歌大赛等项目，快来报名参加吧！</p>
-                    </td></tr>
-                    <tr><td>
-                        <p id="item1-where">活动地点：学校</p>
-                    </td></tr>
-                    <tr><td>
-                        <p id="item1-when">活动时间：2012年9月20日--10月20日</p>
-                    </td></tr>
-                    <tr><td>
-                        <p id="item1-no">活动人数：不限</p>
-                    </td></tr>
-                    <tr><td><p id="item1-time">n天前</p>
-                        <button class="btn btn-mini pull-right" type="button" onclick="ChatShow();" id="item1-details" ><i class="icon-zoom-in"></i>查看详情</button>
-                    </td></tr>
-                </table>
-                <table>
-                    <tr><td></br><img id="item3-pic" src="Pictures/软件学院.jpg">
-                        <a href="#" id="item3-name" style="color:#ff7500;position:relative;bottom:14px;">&nbsp;软件学院</a>
-                    </td></tr>
-                    <tr><td>
-                        <p id="item3-title">活动名称：C语言编程大赛！</p>
-                    </td></tr>
-                    <tr><td><p id="item3-description">活动描述：第五届C语言编程大赛火热报名啦！前10名均有奖金！</p></td></tr>
-                    <tr><td>
-                        <p id="item3-where">活动地点：软件学院实验室</p>
-                    </td></tr>
-                    <tr><td>
-                        <p id="item3-when">活动时间：2012年9月25日--10月10日</p>
-                    </td></tr>
-                    <tr><td>
-                        <p id="item3-no">活动人数：不限</p>
-                    </td></tr>
-                    <tr><td><p>n天前</p>
-                        <button class="btn btn-mini pull-right" type="button" onclick="ChatShow();" id="item3-details" ><i class="icon-zoom-in"></i>查看详情</button>
-                    </td></tr>
-                </table>
+                <!--此处用来挂载我参与的活动-->
+				
             </div>
-
         </div>
     </div>
-
-
-
 </DIV>
 
 
 
 
 
-<!-- chatwindow 下面的东西是左边的聊天窗，内容也在chatwindow.js里-->
-<div id='chat-place'></div>
+<!-- 此处用来挂在聊天窗口-->
+<div id='chat-place'>
+<!-- style="position:fixed;right:327px;bottom:20px;height:400px;z-index:5000;background:#000000;opacity:0.8"> -->
+	
+</div>
 
 
 
@@ -285,16 +226,16 @@
 
         </div>
     </div>
-</div> <!-- end map-->
+</div> 
+
 
 <footer>
-    <input type="hidden" value="<%=@current_user.id%>" id="current_user_id" name="current_user_id">
-    <p></p>
+	
 </footer>
 
 
 <!--此处放模板-->
-<!--有右下角活动列表的模板-->
+<!--右下角活动列表的模板-->
 <script type="text/template" id="tpl-activityList">
     <table>
         <tr>
@@ -380,69 +321,105 @@
     </div>
 </script>
 
+
 <!-- 聊天框 -->
 <script type="text/template" id="tpl-chatWindow">
 <div id="chat-main" class="dragclass" style="right:328px;bottom:20px;">
     <div id="chat-head">
-        <a href="#" id="chat-close">x</a>
+        <a href="#" id="chat-close" class="pull-right">x&nbsp;</a>
     </div>
     <div id="chat-body">
-        <div id="chat-content">
-            <table id="activity-content" background="Pictures/框3.png"
-                   style="height:333px;width:400px;table-layout:fixed; ">
-                <tr style="height:40px;">
-                    <td>&nbsp;&nbsp;&nbsp;
-                        <img id="chat-activity-pic1" src="Pictures/资环学院.jpg">
-                        <a style="position:relative;left:10px;bottom:14px;"
-                           id="chat-activity-name" href="#">{{id}}</a>
-                    </td>
-                </tr>
-                <tr style="height:25px"></tr>
-                <tr style="height:268px;text-align:center;">
-                    <td>
-                        <table style="width:360px;height:268px;table-layout:fixed;padding:20px; ">
-                            <tr style="height:200px;">
-                                <td style="width:200px;">
-                                    <img src="Pictures/t2.jpg" id="chat-activity-pic2" style="width:140px;">
-                                </td>
-                                <td style="width:140px;height:100px;text-overflow: ellipsis;">
-                                    <p id="chat-activity-description">植树在行动，需要您的参与！本次树苗不多，想要参加的同学尽快了！</p>
-                                </td>
-                            </tr>
+        
+		<div id="chat-pic" style="width:240px;height:370px;position:fixed;right:630px;">
+		<div>
+		<table id="activity-content" background="Pictures/k1.png"
+		                   style="height:333px;width:240px;table-layout:fixed; ">
+		            		                <tr style="height:40px;">
+		            		                    <td>&nbsp;&nbsp;&nbsp;
+		            		                        <img id="chat-activity-pic1" src="Pictures/资环学院.jpg">
+		            		                        <a style="position:relative;left:10px;bottom:14px;"
+		            		                           id="chat-activity-name" href="#">{{id}}</a>
+		            		                    </td>
+		            		                </tr>
+		            		                <tr style="height:25px"></tr>
+		            		                <tr style="height:268px;text-align:center;">
+		            		                    <td>
+												<div>
+												<img src="Pictures/t2.jpg" id="chat-activity-pic2" style="width:180px;height:180px;">
+												</div>
+												<div>
+												<br>
+                                               <a id="chat-time-a" class="pull-left">&nbsp;&nbsp;&nbsp;&nbsp;n天前</a><br>
+                                               <a href="#" id="chat-participate" style="display:inline-block;font-size:12px;">
+                                                   参加(n)&nbsp;&nbsp;&nbsp;</a>
+                                               <a href="#" id="" style="display:inline-block;font-size:12px;">评论(n)&nbsp;&nbsp;</a>
+                                               <a href="#" id="chat-transmit" style="display:inline-block;font-size:12px;">分享(n)&nbsp;&nbsp;</a>
+												</div>
+												</td>
+											</tr>
+		            		                
+		</table>
+		</div>
+		</div>
+		<div id="chat-right" style="width:300px;position:fixed;right:330px;">
+		<div id="chat-content"></div>
+        <div id="chat-box">
+            <textarea name="new-message" rows="2" style="width:180px;height:40px;position:relative;left:10px;top:8px"></textarea>
+            <button class="btn btn-large pull-right" type="button" id="" style="position:relative;right:15px;top:12px" >
+				<i class="icon-ok"></i>回复
+            </button>
 
-                            <tr>
-                                <td colspan="2">
-                                    <p id="chat-time-a" style="display:inline-block">40分钟前</p>
-                                    <a href="#" id="chat-participate" style="display:inline-block;font-size:12px;">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;参加(113)&nbsp;&nbsp;&nbsp;</a>
-                                    <a href="#" id="" style="display:inline-block;font-size:12px;">评论(450)&nbsp;&nbsp;</a>
-                                    <a href="#" id="chat-transmit" style="display:inline-block;font-size:12px;">分享(117)&nbsp;&nbsp;</a>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
+		</div>
+		</div>
+		<!-- 
+            //  <table id="activity-content" background="Pictures/框3.png"
+            //        style="height:333px;width:400px;table-layout:fixed; ">
+            //     <tr style="height:40px;">
+            //         <td>&nbsp;&nbsp;&nbsp;
+            //             <img id="chat-activity-pic1" src="Pictures/资环学院.jpg">
+            //             <a style="position:relative;left:10px;bottom:14px;"
+            //                id="chat-activity-name" href="#">{{id}}</a>
+            //         </td>
+            //     </tr>
+            //     <tr style="height:25px"></tr>
+            //     <tr style="height:268px;text-align:center;">
+            //         <td>
+            //             <table style="width:360px;height:268px;table-layout:fixed;padding:20px; ">
+            //                 <tr style="height:200px;">
+            //                     <td style="width:200px;">
+            //                         <img src="Pictures/t2.jpg" id="chat-activity-pic2" style="width:140px;">
+            //                     </td>
+            //                     <td style="width:140px;height:100px;text-overflow: ellipsis;">
+            //                         <p id="chat-activity-description">植树在行动，需要您的参与！本次树苗不多，想要参加的同学尽快了！</p>
+            //                     </td>
+            //                 </tr>
+            //                             // 
+                                        // <tr>
+                                        //                <td colspan="2">
+                                        //                    <p id="chat-time-a" style="display:inline-block">40分钟前</p>
+                                        //                    <a href="#" id="chat-participate" style="display:inline-block;font-size:12px;">
+                                        //                        &nbsp;&nbsp;&nbsp;&nbsp;参加(113)&nbsp;&nbsp;&nbsp;</a>
+                                        //                    <a href="#" id="" style="display:inline-block;font-size:12px;">评论(450)&nbsp;&nbsp;</a>
+                                        //                    <a href="#" id="chat-transmit" style="display:inline-block;font-size:12px;">分享(117)&nbsp;&nbsp;</a>
+                                        //                </td>
+                                        //            </tr>
+            //             </table>
+            //         </td>
+            //     </tr>
+            // </table>
+			--> 
 			
 			<input type="hidden" id="place{{id}}">
             <table id="message">
                 </br>
-                <tr>
-                    <td style="font-size:14px;font-weight:bold;">小成 说：</td>
-                    <td style="font-size:14px;">请问还能继续报名吗？</td>
-                </tr>
-            </table>
-        </div>
-
-        <div id="chat-box">
-            <textarea name="new-message" rows="2" style="width:380px;position:relative;left:10px;"></textarea>
-            <input name="Submit" type="button" id="chat-comment" value="回复" style="position:relative;left:10px;"/>
-            <input name="Submit" type="button" value="表情" style="position:relative;left:10px;"/>
-        </div>
+                
+				<!--此处放聊天条目-->
+            </table>        
     </div>
 </div>
     
 </script>
+
 
 <!--聊天条目-->
 <script type="text/template" id="tpl-chatItem">
