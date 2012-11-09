@@ -391,8 +391,9 @@
   <div class="iBgWrap"><img style="width: 1349px; display: inline;" id="iPbg" src="Pictures/bg3.jpg" class="iPbg">
     <div style="display: block;" id="iForm" class="iForm">
       <div class="iLogo ibg"></div>
-
+	  
       <%= form_for(:session, url: sessions_path, id:"iLoginForm", method:"post",) do |f| %>
+	  	
       	<input name="_hash" value="0.4853234903421253" type="hidden">
 	    <div id="iEmail" class="iEmail ibg iiBox"><span style="display: none;" id="iTips" class="iTips ibg">请输入账号和密码<a id="iWantPwd" href="javascript:;">！</a></span><span class="ibg iEmailbg iiBg"></span>
 	    	<%= f.text_field :email %>
@@ -403,7 +404,7 @@
         <a id="iSubmit" class="iSubmit ibg">
         <button tabindex="3" type="submit"><span>登录</span></button>
         </a>
-	    
+	    <div><br><br><br><br><br><br><br><a href="<%=register_path%>" style="color:#ffffff;font-size:32px;font-family:微软雅黑;font-weight: bold;">没有账号，注册新用户</a></div>
 
       <% end %>
 
@@ -440,6 +441,7 @@
         <a class="iSubmit ibg">
         <button tabindex="3" type="submit"><span>登录</span></button>
         </a>
+		<div><br><br><br><br><br><br><br><a style="color:#ffffff;font-size:32px;font-family:微软雅黑;font-weight: bold;"><%= link_to "没有账号，注册新用户", register_path%></a></div>
       </form>
     </div>
   </div>
