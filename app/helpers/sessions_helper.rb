@@ -3,7 +3,7 @@ module SessionsHelper
   def sign_in(user)
     cookies.permanent[:remember_token] = user.remember_token
     self.current_user = user
-    puts "--------set current_user:" + current_user.name
+    puts "--------set current_user:" + current_user.name.to_s
   end
 
   def signed_in?
@@ -32,7 +32,7 @@ module SessionsHelper
   def sign_out
     #删除signedAddress中的数据
     if SignedAddress.find_by_user_id(current_user.id).destroy
-      puts "-------clear signed address for user" + current_user.name 
+      puts "-------clear signed address for user" + current_user.name.to_s 
     end
     current_user = nil
     cookies.delete(:remember_token)

@@ -44,7 +44,11 @@ class StaticPagesController < ApplicationController
   end
   
   def setting
-    
+    @user = current_user
+  end
+  
+  def show_all
+    @user = current_user
   end
 
   def jiepan

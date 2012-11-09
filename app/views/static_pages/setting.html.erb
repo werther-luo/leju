@@ -1,4 +1,3 @@
-
 <!DOCTYPE HTML>
 <html lang="en-US">
 <head>
@@ -221,41 +220,7 @@
       </DIV>
 
 <!-- chatwindow 下面的东西是左边的聊天窗，内容也在chatwindow.js里--> 
-    <div id="main" class="dragclass" style="right:328px;bottom:20px;">
-    <div id="ChatHead">
-      <a href="#" onclick="ChatHidden();">x</a>
-    </div>
-    <div id="ChatBody">
-      <div id="ChatContent">
-        <table background="Pictures/框3.png" style="height:333px;width:400px;table-layout:fixed; ">
-          <tr style="height:40px;"><td>&nbsp;&nbsp;&nbsp;<img id="chat-activity-pic1" src="Pictures/资环学院.jpg"><a style="position:relative;left:10px;bottom:14px;" id="chat-activity-name" href="#">资源与环境学院</a></td></tr>
-          <tr style="height:25px"></tr>
-          <tr style="height:268px;text-align:center;"><td>
-            <table style="width:360px;height:268px;table-layout:fixed;padding:20px; ">
-              <tr style="height:200px;"><td style="width:200px;">
-            <img src="Pictures/t2.jpg" id="chat-activity-pic2" style="width:140px;"></td>
-            <td style="width:140px;height:100px;text-overflow: ellipsis;"><p id="chat-activity-description">植树在行动，需要您的参与！本次树苗不多，想要参加的同学尽快了！</p></td>
-          </tr>
-          
-          <tr><td colspan="2"><p id="chat-time-a" style="display:inline-block">n天前</p><a href="#" id="chat-participate" style="display:inline-block;font-size:12px;">&nbsp;&nbsp;&nbsp;&nbsp;参加(113)&nbsp;&nbsp;&nbsp;</a><a href="#" id="chat-comment" style="display:inline-block;font-size:12px;">评论(450)&nbsp;&nbsp;</a><a href="#" id="chat-transmit" style="display:inline-block;font-size:12px;">分享(117)&nbsp;&nbsp;</a></td></tr>
-        </table>
-          </td></tr>
-        </table>
-        <table>
-        </br>
-          <tr><td style="font-size:14px;font-weight:bold;">小成 说：</td><td style="font-size:14px;">请问还能继续报名吗？</td></tr>
-        </table>
-      </div><!--end of chatcontent -->
-
-      <div id="ChatBtn">
-        <form action="" name="chat" method="post">
-        <textarea name="ChatValue" rows="2" style="width:380px;position:relative;left:10px;"></textarea>
-        <input name="Submit" type="button"  value="回复" onclick="ChatSend(this.form);" style="position:relative;left:10px;" />
-        <input name="Submit" type="button"  value="表情" style="position:relative;left:10px;"/>
-        </form>
-      </div>
-    </div>
-  </div><!-- end chatwindow-->
+<!-- end chatwindow-->
 
 
       <div class="container-fluid"> 
@@ -279,25 +244,30 @@
         </div><!--/span--> 
         
         <div class="span6">
-          <div class="row-fluid">
-            <form class="well">
+          <div class="row-fluid" > 
+            <%= form_for @user, class:"well" do |f| %>
+			 <%= render 'shared/error_messages', object: f.object %>
               <ul class="nav">
               </br></br></br></br>
                 <li style="position:relative;left:15px;font-size:16px;">
                     基本资料  
                 </li>
                 </br></br>                    
-                <li style="position:relative;left:130px;">账号<input type="text" id="activity-name-input" class="input-large" placeholder="" style="position:relative;left:30px;"></li>
-                <li style="position:relative;left:130px;">密码<input type="text" id="activity-name-input" class="input-large" placeholder="" style="position:relative;left:30px;"></li>
-                <li style="position:relative;left:130px;">年龄<input type="text" id="activity-name-input" class="input-small" placeholder="" style="position:relative;left:30px;"></li>
-                <li style="position:relative;left:130px;">生日<input type="text" id="activity-name-input" class="input-small" placeholder="" style="position:relative;left:30px;"></li>
-                <li style="position:relative;left:130px;">星座<input type="text" id="activity-name-input" class="input-small" placeholder="" style="position:relative;left:30px;"></li>
+                <li style="position:relative;left:130px;">昵&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp称<%= f.text_field :name, style:"position:relative;left:30px;"  %></li><%=@user.id%>
+                <li style="position:relative;left:130px;">Email&nbsp&nbsp&nbsp&nbsp<%= f.text_field :email, style:"position:relative;left:30px;"  %></li>
+                <li style="position:relative;left:130px;">密&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp码<%= f.password_field :password, style:"position:relative;left:30px;"  %></li>
+                <li style="position:relative;left:130px;">密码确认<%= f.password_field :password_confirmation, style:"position:relative;left:30px;"  %></li>
+                <li style="position:relative;left:130px;">头&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp像&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%= image_tag current_user.photo.url(:thumb) %><%= f.file_field :photo, style:"position:relative;left:30px;"  %></li>
                 <li style="position:relative;left:15px;">爱好(可多选)</li>
                 <br>
+				<br>
+				<br>
+				<br>
                 <li style="position:relative;left:15px;"><input type="checkbox">&nbsp;&nbsp;&nbsp;旅&nbsp;&nbsp;&nbsp;行&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox">&nbsp;&nbsp;&nbsp;美&nbsp;&nbsp;&nbsp;食&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox">&nbsp;&nbsp;&nbsp;明&nbsp;&nbsp;&nbsp;星&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox">&nbsp;&nbsp;&nbsp;音&nbsp;&nbsp;&nbsp;乐&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox">&nbsp;&nbsp;&nbsp;体&nbsp;&nbsp;&nbsp;育&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox">&nbsp;&nbsp;&nbsp;网&nbsp;&nbsp;&nbsp;络&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox">&nbsp;&nbsp;&nbsp;科&nbsp;&nbsp;&nbsp;学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</br><input type="checkbox">&nbsp;&nbsp;&nbsp;历&nbsp;&nbsp;&nbsp;史&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox">&nbsp;&nbsp;&nbsp;时&nbsp;&nbsp;&nbsp;事&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox">&nbsp;&nbsp;&nbsp;军&nbsp;&nbsp;&nbsp;事&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox">&nbsp;&nbsp;&nbsp;艺&nbsp;&nbsp;&nbsp;术&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox">&nbsp;&nbsp;&nbsp;教&nbsp;&nbsp;&nbsp;育&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox">&nbsp;&nbsp;&nbsp;语&nbsp;&nbsp;&nbsp;言&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox">&nbsp;&nbsp;&nbsp;其&nbsp;&nbsp;&nbsp;他&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li></br>
-                <button class="btn-large" style="position:relative;left:200px;">保存修改</button>
+                
+				<%= f.submit "保存更改", class: "btn-large", style: "position:relative;left:200px;" %>
                                
-            </form>
+             <% end %>
 
           </div> 
         </div><!--/span-->
