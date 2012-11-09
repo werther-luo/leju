@@ -28,12 +28,22 @@ class StaticPagesController < ApplicationController
   end
 
   def map
+    signed_in_user
     # @activity = current_user.activities.build
     # @activities = current_user.feed_for_activity.paginate(page: params[:page])
-    @current_user = User.first
+    @current_user = current_user
+    @host_ip = local_ip
   end
 
   def login
+    
+  end
+  
+  def register
+    @user = User.new
+  end
+  
+  def setting
     
   end
 

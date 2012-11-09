@@ -21,8 +21,9 @@ class Activity < ActiveRecord::Base
 
 
   belongs_to :user
-  has_one :address
+  has_one :address, dependent: :destroy
   has_many :microposts, dependent: :destroy
+  has_many :messages, dependent: :destroy
   # has_many :users
   has_many :reverse_user_ac_relas, 	foreign_key: "activity_id",
   									class_name:  "UserAcRela",
@@ -58,11 +59,11 @@ class Activity < ActiveRecord::Base
   end
 
   def self.getNeighbor(lat, lng, rang)
-    @acIds = "SELECT activity_id FROM addresses where 
+    @ac_ids = "SELECT activity_id FROM addresses where 
               lat>#{lat-rang} AND lat<#{lat+rang} 
               AND lng>#{lng-rang} AND lng<#{lng+rang}"
 
-    Activity.where("id IN (#{@acIds})")
+    Activity.where("id IN (#{@ac_ids})")
   end
 
   def to_hash

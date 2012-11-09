@@ -8,9 +8,10 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    #暂时使用第一个User替代
-    current_user = User.first
-    @addressLine = getAddressLine(params[:lat], params[:lng])
+    # 由经纬度查询地址名称，和地址
+    puts "-----------lat:" + params[:lat]
+    puts "-----------lng:" + params[:lng]
+    # @addressLine = getAddressLine(params[:lat], params[:lng])
     @addressSub = getAddress(params[:lat], params[:lng])
     puts "-----------before build activity  safsfa"
     puts "-----------current_user:" + current_user.name
@@ -23,10 +24,9 @@ class ActivitiesController < ApplicationController
     @activity[:pcount] = params[:peopleNum]
     @activity[:content] = params[:content]
     @activity[:back_up] = params[:ps]
-    # @address[:lat] = params[:lat]
-    # @address[:lng] = params[:lng]
     @activity[:GUID] = 0;
     @activity[:GUID_created_at] = 0;
+
     if @activity.save!
       puts "------------insert successful"
       @address = @activity.build_address()
@@ -36,14 +36,20 @@ class ActivitiesController < ApplicationController
       @address[:lng] = params[:lng]
       if @address.save!
         puts "-----------adress saved successful, and activity created successful"
+        if @activity.tag!(@tag)
+          puts "-----------teaged!"
+        end
         #成功创建活动，下面开始广播这个新的活动
-        publish_new_act
+        publish_new_act(@activity)
       else
         puts "-----------address insert error"
       end
     else
       puts "------------insert error"
     end
+
+    # return_val = "success"
+    # respond_with return_val.to_json
 
   	# @activity = current_user.activities.build(params[:activity])
    #  @tag = Tag.find(params[:tag][:id])
@@ -61,13 +67,27 @@ class ActivitiesController < ApplicationController
     # @neighborActs = Activity.getNeighbor(paramms[:lat],params[:lng],0.01)
     puts "------lat:"+params[:lat]
     puts "------lng:"+params[:lng]
-    @neighborActs = Activity.getNeighbor(params[:lat].to_f,params[:lng].to_f,0.01)
+    @neighborActs = Activity.getNeighbor(params[:lat].to_f,params[:lng].to_f,1)
+    # puts @neighborActs
+    # puts "---------------------------------------"
+    # 周围的活动不包括该用户已经参加的
+    @neighborActs = @neighborActs - current_user.followed_acts
+    # puts @neighborActs
+    # 周围的活动也不包括用户自己创建的
+    @neighborActs = @neighborActs - current_user.activities
+    # puts "---------------------------------------"
+    puts @neighborActs
     puts "------getNeighbor success"
+    puts "------测试current_user：" + current_user.name + "./" + current_user.email
     results = Hash.new
     results[:adjActs] = objs_to_hash(@neighborActs)
-    results[:relaActs] = objs_to_hash(@neighborActs)
+    results[:relaActs] = objs_to_hash(current_user.followed_acts)
+    results[:ownActs] = objs_to_hash(current_user.activities)
+    # puts results.to_json
     # respond_to do |format|
-      respond_with results.to_json
+
+    # puts results.to_json
+    respond_with results.to_json
     # end
 
   end
@@ -95,6 +115,7 @@ class ActivitiesController < ApplicationController
     @url = "http://ditu.google.cn/maps/geo?output=json&key=abcdef&q=#{lat},#{lng}"
     puts "------url:" + @url
     result = Net::HTTP.get(URI.parse(@url))
+    puts "------success get results" + results
     @addressLine = "该地址没有确切的地名"
     @json = JSON::parse(result)
     if @json["Placemark"][0]["AddressDetails"]["Country"]["AdministrativeArea"]["Locality"]["DependentLocality"].has_key?"AddressLine"
@@ -130,14 +151,17 @@ class ActivitiesController < ApplicationController
       act_hash[:created_at] = var.created_at 
       act_hash[:creator_id] = var.user_id
       act_hash[:creator_name] = User.find(var.user_id).name
+      act_hash[:creator_photo] = User.find(var.user_id).photo.url(:thumb)
       act_hash[:lat] = var.address.lat
       act_hash[:lng] = var.address.lng
+      act_hash[:type] = var.tags[0].content
       acts << act_hash
     end
     acts
   end
 
-  def publish_new_act
+  #新建活动和之后，发布广播通知周围的已登录的用户和好友 
+  def publish_new_act(act)
     puts "-------enter publish method"
     EM.run{
       puts "--------enter run block"
@@ -154,8 +178,51 @@ class ActivitiesController < ApplicationController
       results[:relaActs] = objs_to_hash(@neighborActs)
       #重写部分
 
-      client.publish('/activity/public', 'acts' => results.to_json)
+      # 首先被广播者应该是关注该活动创建人的用户，即活动创建者的好友
+      @creator_followers = act.creator.followers
+      puts "-------get followers  successful"
+      # 之后是该活动位置周边登陆的用户
+      @neighbor_singed_users = SignedAddress.get_near_by(act.address.lat, act.address.lng,10)
+      puts "-------get neighbor_singed_users successful"
+
+      # 开始publish
+      @creator_followers.each do |user|
+        puts "-------start publish to " + user.name + "channel"
+        puts "-------json:" + obj_to_hash(act).to_json
+        client.publish("/newact/#{user.id}", 'act' => obj_to_hash(act).to_json)
+        puts "-------success publish to " + user.name + "channel"
+      end
+
+      @neighbor_singed_users.each do |user|
+        puts "-------start publish to " + user.name + "channel"
+        client.publish("/newact/#{user.id}", 'act' => obj_to_hash(act).to_json)
+        puts "-------success publish to " + user.name + "channel"
+      end
+      puts "--------publish successful"
+      # client.publish('/activity/public', 'acts' => results.to_json)
     }
+  end
+
+
+  def obj_to_hash(var)
+    act_hash = Hash.new
+    act_hash[:id] = var.id
+    act_hash[:title] = var.title
+    act_hash[:time_start] = var.time_start
+    act_hash[:time_end] = var.time_end
+    act_hash[:content] = var.content 
+    act_hash[:address] = var.address.address 
+    act_hash[:address_line] = var.address.addressLine
+    act_hash[:ps] = var.back_up 
+    act_hash[:state] = var.state 
+    act_hash[:created_at] = var.created_at 
+    act_hash[:creator_id] = var.user_id
+    act_hash[:creator_name] = User.find(var.user_id).name
+    act_hash[:creator_photo] = User.find(var.user_id).photo.url(:thumb)
+    act_hash[:lat] = var.address.lat
+    act_hash[:lng] = var.address.lng
+    act_hash[:type] = var.tags[0].content
+    act_hash
   end
 
 end

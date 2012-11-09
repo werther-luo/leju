@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121102085648) do
+ActiveRecord::Schema.define(:version => 20121107054614) do
 
   create_table "act_photo_relas", :force => true do |t|
     t.integer  "activity_id"
@@ -73,6 +73,14 @@ ActiveRecord::Schema.define(:version => 20121102085648) do
   add_index "interest_tag_records", ["user_id", "tag_id"], :name => "index_interest_tag_records_on_user_id_and_tag_id"
   add_index "interest_tag_records", ["user_id"], :name => "index_interest_tag_records_on_user_id"
 
+  create_table "messages", :force => true do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.integer  "activity_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "microposts", :force => true do |t|
     t.string   "content"
     t.integer  "user_id"
@@ -109,6 +117,15 @@ ActiveRecord::Schema.define(:version => 20121102085648) do
   add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"
   add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
   add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
+
+  create_table "signed_addresses", :force => true do |t|
+    t.float    "lat"
+    t.float    "lng"
+    t.integer  "user_id"
+    t.integer  "state"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "tags", :force => true do |t|
     t.string   "content"
