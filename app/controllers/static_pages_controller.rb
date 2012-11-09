@@ -49,6 +49,20 @@ class StaticPagesController < ApplicationController
   
   def show_all
     @user = current_user
+    @joined_acts = @user.followed_acts.limit(10)
+    @owned_acts = @user.activities.limit(10)
+    # puts @owned_acts
+  end
+  
+  def show_act
+    @activity = Activity.find(params[:id])
+  end
+  
+  def comment
+    @micropost = current_user.microposts.build
+    if params[:id]
+      @micropost.activity_id = params[:id]
+    end
   end
 
   def jiepan

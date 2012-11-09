@@ -53,7 +53,8 @@ SampleApp::Application.routes.draw do
   match '/message/index', to: 'message#index', via: :get 
   match '/message/new', to: 'message#create', via: :post
   match '/show_all', to: 'static_pages#show_all'
-  
+  match '/show_act', to: 'static_pages#show_act'
+  match '/comment', to: 'static_pages#comment'
   # match '/jiepan', to: 'static_pages#jiepan'
   # The priority is based upon order of creation:
   # first created -> highest priority.

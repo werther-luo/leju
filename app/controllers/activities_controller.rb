@@ -14,7 +14,7 @@ class ActivitiesController < ApplicationController
     # @addressLine = getAddressLine(params[:lat], params[:lng])
     @addressSub = getAddress(params[:lat], params[:lng])
     puts "-----------before build activity  safsfa"
-    puts "-----------current_user:" + current_user.name
+    # puts "-----------current_user:" + current_user.name
     @activity = current_user.activities.build()
     puts "-----------user build activity"
     @tag = Tag.find_by_content(params[:type])
@@ -78,7 +78,7 @@ class ActivitiesController < ApplicationController
     # puts "---------------------------------------"
     puts @neighborActs
     puts "------getNeighbor success"
-    puts "------测试current_user：" + current_user.name + "./" + current_user.email
+    #puts "------测试current_user：" + current_user.name + "./" + current_user.email
     results = Hash.new
     results[:adjActs] = objs_to_hash(@neighborActs)
     results[:relaActs] = objs_to_hash(current_user.followed_acts)
