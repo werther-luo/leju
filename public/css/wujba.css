@@ -1,0 +1,443 @@
+
+* {
+    border: medium none;
+    margin: 0;
+    padding: 0;
+}
+button {
+    cursor: pointer;
+}
+body {
+    background: url("../Pictures/bodybg.png") repeat scroll 0 0 transparent;
+    color: #222222;
+    font-family: tahoma,arial,simsun,"宋体";
+    font-size: 14px;
+    overflow-y: scroll !important;
+}
+ul, ol, li {
+    list-style: none outside none;
+}
+h1, h2, h3, h4, h5, h6, .yahei {
+    font-family: Microsoft YaHei,"微软雅黑",tahoma,arial,simhei,"黑体";
+}
+h3 {
+    color: #0099FF;
+}
+a:link, a:visited {
+    color: #FF7700;
+    outline: medium none;
+    text-decoration: none;
+}
+a:hover, a:active {
+    color: #0099FF;
+    outline: medium none;
+    text-decoration: underline;
+}
+.clear {
+    clear: both;
+}
+.fl {
+    display: block;
+    float: left;
+}
+.fr {
+    display: block;
+    float: right;
+}
+.clearfix {
+}
+.clearfix:after {
+    clear: both;
+    content: "";
+    display: block;
+}
+.none {
+    display: none;
+}
+.whiteBg {
+    background: none repeat scroll 0 0 #FFFFFF;
+}
+textarea {
+    border: 1px solid #E6E6E6;
+    font-family: tahoma,arial,simsun,"宋体";
+    font-size: 14px;
+    height: 75px;
+    line-height: 25px;
+    padding: 5px;
+    width: 100%;
+}
+p {
+    line-height: 25px;
+    padding: 5px 0;
+}
+p a {
+    color: #000000;
+    text-decoration: underline;
+}
+p a:hover {
+    color: #7594B3;
+}
+.txtl {
+    text-align: left;
+}
+.txtr {
+    text-align: right;
+}
+.txtc {
+    text-align: center;
+}
+.alpha {
+    opacity: 0.9;
+}
+.alpha2 {
+    opacity: 0.4;
+}
+.ftblue {
+    color: #0099FF;
+}
+.ftorange {
+    color: #FF7700;
+}
+.ftgray {
+    color: #777777;
+}
+.ftred {
+    color: #FF0000;
+}
+.blacka:link, .blacka:visited {
+    color: #222222;
+    text-decoration: none;
+}
+.blacka:hover, .blacka:active {
+    color: #222222;
+    text-decoration: underline;
+}
+.bluea:link, .bluea:visited {
+    color: #0099FF;
+    text-decoration: none;
+}
+.bluea:hover, .bluea:active {
+    color: #7594B3;
+    text-decoration: underline;
+}
+.graya:link, .graya:visited {
+    color: #777777;
+    text-decoration: none;
+}
+.graya:hover, .graya:active {
+    color: #7594B3;
+    text-decoration: underline;
+}
+.pinka:link, .pinka:visited {
+    color: #FF7F7F;
+    text-decoration: none;
+}
+.pinka:hover, .pinka:active {
+    color: #FF0000;
+    text-decoration: underline;
+}
+.grayborder {
+    border: 1px solid #C3C3C5;
+}
+.loading {
+    background: url("/static/img/load.gif") no-repeat scroll 0 0 transparent;
+    height: 20px;
+    left: 50%;
+    margin-left: -30px;
+    position: absolute;
+    top: 40%;
+    width: 60px;
+}
+.baseTip {
+    display: none;
+    height: 25px;
+    left: 0;
+    position: fixed;
+    text-align: center;
+    top: -10px;
+    width: 100%;
+    z-index: 99;
+}
+.baseTip .btBox {
+    background-color: #F9FBD4;
+    border: 10px solid #555555;
+    color: #555555;
+    display: inline-block;
+    font-family: Microsoft YaHei,"微软雅黑",tahoma,arial,simhei,"黑体";
+    font-size: 22px;
+    height: 80px;
+    line-height: 80px;
+    padding: 10px 15px;
+    width: 300px;
+}
+.top {
+    background: url("../Pictures/ifoot.png") repeat-x scroll 0 -136px transparent;
+    height: 94px;
+    width: 100%;
+}
+.top .topBox {
+    height: 94px;
+    margin: 0 auto;
+    position: relative;
+    width: 980px;
+}
+.shadow {
+    background: url("../Pictures/ifoot.png") repeat-x scroll 0 0 transparent;
+    height: 21px;
+    overflow: hidden;
+    width: 100%;
+}
+.foot {
+    margin-top: 35px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+.foot span {
+    padding: 0 18px;
+}
+.foot .footBox {
+    margin: 0 auto;
+    width: 800px;
+}
+.goTop {
+    background-position: -164px -443px;
+    bottom: 30px;
+    display: block;
+    height: 50px;
+    position: fixed;
+    right: 30px;
+    width: 50px;
+    z-index: 99;
+}
+.goTop:hover {
+    background-position: -113px -443px;
+}
+.pbg {
+    background: url("../Pictures//pagebg.png") no-repeat scroll 0 0 transparent;
+}
+.tipres {
+    display: inline-block;
+    height: 24px;
+    line-height: 24px;
+    margin-top: 20px;
+    padding-left: 30px;
+}
+.tipsuc {
+    background-position: -797px -439px;
+}
+.tiperr {
+    background-position: -797px -465px;
+}
+.ibg {
+    background: url("../Pictures/ibg1.png") no-repeat scroll 0 0 transparent;
+}
+.iWrap {
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 100%;
+}
+.iWrap .iBgWrap {
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+.iWrap .iBgWrap .iPbg {
+    display: none;
+}
+.iWrap .iFoot {
+    background: url("../Pictures/ifoot.png") repeat-x scroll 0 -42px transparent;
+    bottom: 0;
+    display: none;
+    height: 94px;
+    opacity: 0.9;
+    position: absolute;
+    width: 100%;
+    z-index: 5;
+}
+.iWrap .iFoot a {
+    background-position: 165px -445px;
+    color: #AAAAAA;
+    display: block;
+    font-size: 40px;
+    height: 45px;
+    margin: 20px auto 0;
+    text-align: left;
+    width: 210px;
+}
+.iWrap .iFoot a:hover {
+    background-position: 165px -512px;
+    color: #DDDDDD;
+    text-decoration: none !important;
+}
+.iWrap .iFoot .ifText {
+    color: #FFFFFF;
+    height: 20px;
+    position: absolute;
+    text-align: center;
+    top: -30px;
+    width: 100%;
+}
+.iForm {
+    display: none;
+    height: 230px;
+    left: 50%;
+    margin: -140px 0 0 -350px;
+    position: absolute;
+    top: 40%;
+    width: 700px;
+    z-index: 10;
+}
+.iForm .iLogo {
+    background-position: 0 0;
+    height: 150px;
+    margin: 0 auto;
+    width: 488px;
+}
+.iForm .iiBox {
+    background-position: 0 -151px;
+    bottom: 0;
+    height: 40px;
+    padding-top: 10px;
+    position: absolute;
+    text-align: left;
+    vertical-align: middle;
+    width: 273px;
+}
+.iForm .iiBox input {
+    background: none repeat scroll 0 0 transparent;
+    color: #AAAAAA;
+    font-family: tahoma,arial,simhei;
+    font-size: 20px;
+    height: 30px;
+    line-height: 30px;
+    outline: medium none;
+    text-indent: 5px;
+    vertical-align: middle;
+    width: 210px;
+}
+.iForm .iiBox .iiBg {
+    display: inline-block;
+    height: 30px;
+    vertical-align: middle;
+    width: 43px;
+}
+.iForm .iiBoxh {
+    background-position: 0 -210px;
+}
+.iForm .iEmailbg {
+    background-position: 10px -275px;
+}
+.iForm .iPwdbg {
+    background-position: 10px -338px;
+}
+.iForm .iEmail {
+    left: 0;
+}
+.iForm .iEmail2 {
+    left: 140px;
+}
+.iForm .iPwd {
+    left: 280px;
+}
+.iForm .iPwd2 {
+    display: none;
+}
+.iForm .iSubmit {
+    background-position: -283px -150px;
+    bottom: -2px;
+    cursor: pointer;
+    height: 53px;
+    position: absolute;
+    right: 0;
+    width: 137px;
+}
+.iForm .iSubmit button {
+    background: none repeat scroll 0 center transparent;
+    cursor: pointer;
+    height: 52px;
+    width: 137px;
+}
+.iForm .iSubmit span {
+    display: block;
+    text-indent: -9999px;
+}
+.iForm .iSubmit:hover {
+    background-position: -283px -212px;
+}
+.iForm .iSubmit:active {
+    background-position: -283px -274px;
+}
+.iForm .iSubmit2 {
+    right: 140px;
+}
+.iForm .iSubmitDis {
+    background-position: -283px -338px;
+}
+.iForm .iTips {
+    background-position: 0 -399px;
+    color: #FFFFFF;
+    display: none;
+    height: 40px;
+    left: 40px;
+    line-height: 20px;
+    padding: 5px 10px;
+    position: absolute;
+    top: -40px;
+}
+.ieForm {
+    display: block;
+    height: 50px;
+    margin: 0 0 0 -350px;
+    top: 20px;
+}
+.ieWrap {
+    margin: 30px auto;
+    overflow: hidden;
+    text-align: center;
+    width: 100%;
+}
+.ieWrap img {
+    height: 150px;
+    width: 150px;
+}
+.ieWrap .ieBox {
+    display: none;
+}
+.ieWrap .ieBox .ieWrap {
+    background-color: #FFFFFF;
+    font-size: 14px;
+    line-height: 28px;
+    margin: 10px auto 30px;
+    padding: 30px;
+    text-align: left;
+    width: 700px;
+}
+.ieBody {
+    display: none;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.ieBack {
+    background-position: -90px -517px;
+    cursor: pointer;
+    display: block;
+    height: 50px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 50px;
+    z-index: 20;
+}
+.ieBack:hover {
+    background-position: -90px -452px;
+}
