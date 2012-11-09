@@ -24,9 +24,11 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user
       flash[:success] = "Welcome to the Sample App!"
-      redirect_to user_settiing_path(current_user)
+      redirect_to user_setting_path(current_user)
+      puts "---------register success"
     else
-      render 'new'
+      redirect_to register_path
+      puts "---------register fail"
     end
   end
 
@@ -37,9 +39,9 @@ class UsersController < ApplicationController
     if @user.update_attributes(params[:user])
       flash[:success] = "资料修改成功"
       sign_in @user
-      redirect_to @user
+      redirect_to user_setting_path
     else
-      render 'edit'
+      redirect_to user_setting_path
     end
   end
 
