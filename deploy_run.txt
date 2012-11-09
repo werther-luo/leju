@@ -7,3 +7,19 @@ rake db:populate
 thin start
 
 rackup faye.ru -E production -s thin
+
+
+=======================================
+====页面统计：
+=======================================
+--登陆页面。
+--注册页面（register.html）
+--map主页
+--活动主页（用于显示单个活动的内容详情和评论的历史记录，聊天记录，其他人发布的活动图片，和活动的创建人可以修改活			动信息）(activity_home.html)
+	---分为已参加（joined_activitty.html）的和未参加(unjoined_activity.html)的
+--timeline主页（用于显示该用户关注的活动的动态，和好友的动态）(timeline.html)
+	---好友分享的活动信息
+	---我参加和我创建的活动的实时动态（以及事后分享）
+	---
+--用户设置
+--
