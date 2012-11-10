@@ -340,7 +340,7 @@
 
 <!-- 聊天框 -->
 <script type="text/template" id="tpl-chatWindow">
-<div id="chat{{id}}">
+<div id="chat{{id}}" class='toBeHidden'>
     <div id="chat-main" class="dragclass" style="right:328px;bottom:20px;">
         <div id="chat-head">
             <a href="#" id="chat-close" class="pull-right">x&nbsp;</a>
@@ -353,9 +353,9 @@
                            style="height:333px;width:240px;table-layout:fixed; ">
                         <tr style="height:40px;">
                             <td>&nbsp;&nbsp;&nbsp;
-                                <img id="chat-activity-pic1" src="Pictures/资环学院.jpg">
+                                <img id="chat-activity-pic1" src="{{user_photo}}">
                                 <a style="position:relative;left:10px;bottom:14px;"
-                                   id="chat-activity-name" href="#">{{id}}</a>
+                                   id="chat-activity-name" href="#">{{title}}</a>
                             </td>
                         </tr>
                         <tr style="height:25px"></tr>
@@ -365,6 +365,7 @@
                                     <img src="Pictures/t2.jpg" id="chat-activity-pic2"
                                          style="width:180px;height:180px;">
                                 </div>
+								<!--
                                 <div>
                                     <br>
                                     <a id="chat-time-a" class="pull-left">&nbsp;&nbsp;&nbsp;&nbsp;n天前</a><br>
@@ -373,6 +374,7 @@
                                     <a href="#" id="" style="display:inline-block;font-size:12px;">评论(n)&nbsp;&nbsp;</a>
                                     <a href="#" id="chat-transmit" style="display:inline-block;font-size:12px;">分享(n)&nbsp;&nbsp;</a>
                                 </div>
+								-->
                             </td>
                         </tr>
 

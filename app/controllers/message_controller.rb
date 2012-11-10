@@ -10,8 +10,12 @@ class MessageController < ApplicationController
     puts "--------enter index method"
     @activity_id = params[:activity_id]
     puts "--------geted activity_id:" + @activity_id.to_s
+    @act_title_and_mesg = Hash.new
+    @act_title_and_mesg[:act_title] = Activity.find(@activity_id).title
     @messages = Activity.find(@activity_id).messages
-    puts @messages.to_json
+    @act_title_and_mesg[:messages] = @messages
+    @act_title_and_mesg[:user_photo] = current_user.photo.url(:thumb)
+    puts @act_title_and_mesg.to_json
     
     #服务器不再监听，也不再广播，只是进行基本的数据存储
     #开始监听这个活动
@@ -27,7 +31,7 @@ class MessageController < ApplicationController
     #     }
     
     respond_to do |format|
-      format.json { render :json => @messages}
+      format.json { render :json => @act_title_and_mesg}
     end
   end
 

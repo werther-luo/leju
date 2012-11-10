@@ -65,7 +65,7 @@ $(function () {
         success:function (position) {
             map.setCenter(position.coords.latitude, position.coords.longitude);
 
-            //成功定位并且页面加载完成后，提交经纬度，获取结果为两个list，将其渲染到地图和右下角弹窗那里去
+            //成功定位并且页面加载完成后，提交经纬度，获取结果为3个list，将其渲染到地图和右下角弹窗那里去
             var initUrl = 'activities',
                 initData = {
                     lng:position.coords.longitude,
@@ -75,7 +75,7 @@ $(function () {
                     //此处进行渲染
                     console.log("succed in replying data");
 
-                    var activityList = eval(data); //此处待定
+                    var activityList = eval(data); //把json数据格式转换为js对象
                     var adjecntActivities = activityList.adjActs, //取到地图活动 数组
                         relativeActivities = activityList.relaActs, //取到用户参加的活动 数组
                         ownActivities = activityList.ownActs, //取到用户创建的活动
@@ -207,7 +207,7 @@ $(function () {
                     },
                     success = function (data) {
                         //把新参加的活动显示到右下角列表中去
-                        var activity = eval(data); //此处待定
+                        var activity = eval(data); 
                         activityWindow = Mustache.to_html(template2,
                             {
                                 time_start: activity.time_start,
@@ -222,13 +222,12 @@ $(function () {
 
                         $(activityWindow).appendTo($('#tab2'));
                         alert("您已经成功参加该活动，点击右下角可以查看");
-
+						
+						map.refresh();
                         // TODO 把这个活动的infoWindow中参加按钮改成已参加
 //                        $
                     },
                     dataType = 'JSON';
-
-
 
                 $.ajax({
                     type:'POST',
@@ -240,7 +239,9 @@ $(function () {
 
             });
 			
-			var activity_id = '';
+			var activity_id = '',
+				chatPlace = $('#chat-place'),
+				allChatWindow = chatPlace.find('.toBeHidden');
 			//点击查看详情之后出现聊天框
             $('#chat-open').live('click', function(e) {
                 e.preventDefault();
@@ -252,27 +253,40 @@ $(function () {
                         activity_id: activity_id
                     },
                     success = function (data) {
+						var replyData = eval(data),
+							commentList = replyData.messages,
+							activity_title = replyData.act_title,
+							user_photo = replyData.user_photo,
+							i = 0,
+							l = commentList.length,
+		                    chatItem;
+							
 						//成功获取聊天记录之后弹出聊天框
 				        var chatWindow = Mustache.to_html(template3,{
-		                	id: activity_id
+							title: activity_title,
+		                	id: activity_id,
+							user_photo: user_photo
 		                });
 						
-						//如果聊天窗口已经生成过一次，那么就直接显示
-						var chatPlace = $('#chat-place'),
-							windowID = 'div#chat' + activity_id,
+						
+						var windowID = 'div#chat' + activity_id,
 							chatWindowID = chatPlace.find(windowID);
-						console.log("just for a test:" + chatWindowID.html());
-						if(chatWindowID.length == 0){
+						
+						// console.log("just for a test:" + chatWindowID.html());
+						
+						//隐藏所有 已经打开的聊天窗口
+						console.log(allChatWindow.length);
+						for(; j <= allChatWindow.length; j++){
+							allChatWindow[j].hide;
+						};
+											
+						//如果聊天窗口已经生成过一次，那么就直接显示
+						if(chatWindowID.length == 0){							
 							//显示聊天窗口
 							$(chatWindow).appendTo(chatPlace);
 							
 							//显示聊天记录
-							var commentList = eval(data),
-								i = 0,
-								l = commentList.length,
-			                    chatItem;
-
-							for(; i < l; i++){
+							for(var j = 0; i < l; i++){
 							    chatItem = Mustache.to_html(template4,{
 							   		user_name: commentList[i].user_id,
 							   		comment: commentList[i].content
@@ -280,13 +294,10 @@ $(function () {
 							
 								$(chatItem).appendTo(chatPlace.find(windowID).find('table#message'));
 							}
-						} else{
-							// $(chatWindowID).show(); 
+						} else{						
 							chatWindowID.css('display','block');
+							// chatWindowID.toggle();
 						}
-						
-						
-						
                     },
                     dataType = 'JSON';
 				
@@ -380,18 +391,19 @@ $(function () {
         }
     });
 
-    map.drawRoute({
-        origin:[38.876, 121.525],
-        destination:[38.876, 122.73],
-        travelMode:'driving',
-        strokeColor:'#131540',
-        strokeOpacity:0.6,
-        strokeWeight:6,
-        step:function (e) {
-            console.log(e.step_number + ": " + e.instructions);
-        }
-    });
+    // map.drawRoute({
+    //     origin:[38.876, 121.525],
+    //     destination:[38.876, 122.73],
+    //     travelMode:'driving',
+    //     strokeColor:'#131540',
+    //     strokeOpacity:0.6,
+    //     strokeWeight:6,
+    //     step:function (e) {
+    //         console.log(e.step_number + ": " + e.instructions);
+    //     }
+    // });
 
+	//给地图添加右键菜单：新建活动以及定位
     map.setContextMenu({
         control:'map',
         options:[
@@ -400,9 +412,9 @@ $(function () {
                 name:'add_marker',
                 action:function (e) {
                     this.addMarker({
-                        lat:e.latLng.lat(),
-                        lng:e.latLng.lng(),
-                        title:'刚刚添加的活动,刷新页面后可以查看详情'
+                         lat:e.latLng.lat(),
+                         lng:e.latLng.lng(),
+                         title:'刚刚添加的活动,刷新页面后可以查看详情'
                     });
                     $modal_a.trigger('show');
 
@@ -435,7 +447,21 @@ $(function () {
                         });
 
                         $modal_a.trigger('hide');
-                        alert("活动创建成功");
+                        alert("活动创建成功,请点击右下角的消息窗查看");
+						//把新建的活动显示到消息窗
+                        // var activityListWindow = Mustache.to_html(template2,
+                        //                             {
+                        //                                 time_start:data.startTime,
+                        //                                 // content:ownActivities[i].content,
+                        //                                 //                                 creator_name:ownActivities[i].creator_name,
+                        //                                 //                                 time_end:ownActivities[i].time_end,
+                        //                                 //                                 title:ownActivities[i].title,
+                        //                                 //                                 address_line:ownActivities[i].address_line,
+                        //                                 // 								id: ownActivities[i].id,
+                        //                                 //                                 creator_photo:"http://" + basePath + ":3000/" + ownActivities[i].creator_photo
+                        //                             });
+                        // 
+                        //                         $(activityListWindow).append($('#tab1'));
                     });
                 }
             },
