@@ -1,5 +1,5 @@
 <li>
-	<%= link_to(truncate(activity.title, :length => 100), activities_path+"/#{activity.id}", :title => activity.title) %>
+	<%= link_to(truncate(activity.title, :length => 100), show_act_path+"?id=#{activity.id}", :title => activity.title) %>
 	<br>
   开始时间:
   <span class="content"><%= activity.time_start %></span>

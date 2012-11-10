@@ -85,24 +85,30 @@
 
 <!-- fixed top bar--> 
     <div class="navbar navbar-fixed-top" id="id_topbar">
-      <div class="navbar-inner"> 
-        <div class="container-fluid">     
-          <a class="brand" href="map.html" title="首页"> 乐 聚</a>  
-          <div class="nav-collapse"> 
-            <ul class="nav nav-pills">
+        <div class="navbar-inner"> 
+          <div class="container-fluid">     
+            <a class="brand" href="<%=map_path%>" title="首页"> 乐 聚</a>  
+            <div class="nav-collapse"> 
+              <ul class="nav nav-pills">
               
-              <li><a href="map.html">地  图</a>           
-              </li>
-              <li class="active"><a href="activity_home.htm">活  动</a></li>
-              <li><a href="personalpage.html">个人主页</a></li>
-              <li><a href="friends.html">好  友</a></li>
-            </ul>
+                <li><a href="<%=map_path%>">地  图</a>           
+                </li>
+                <li class="active"><a href="<%=show_all_path%>">活  动</a></li>
+             
+                <li><a href="friends.html">好  友</a></li>
+              </ul>
+                
+      
 
             <ul class="nav nav-pills pull-right">
-            <li class="guess-button"><a href="#"><i class="icon-upload icon-white"></i> 活动推荐</a></li> 
-            <li><a href="account_setting.html"><i class="icon-cog icon-white"></i> 设置</a></li>
-            <li><a href="#"><i class="icon-off icon-white"></i> 退出</a></li>
-                  
+	            <ul class="nav nav-pills pull-right">
+	            <li class="guess-button"><a href="#"><i class="icon-upload icon-white"></i> 活动推荐</a></li> 
+	           <li><%= link_to "设置", user_setting_path(current_user) %></li>
+	                    <li><%= link_to "退出", signout_path, method: "delete" %></li>
+
+	                    <li><a href="#">用户名:<%=@current_user.name%></a></li>
+                    
+            
 
             </ul>           
 
@@ -229,7 +235,7 @@
       <ul class="nav nav-pills">
         <li class="active"><a href="activity_002_index.html">主页</a></li>
         <li><a>活动资料</a></li>
-        <li><a href="#">活动相册</a></li>
+        <li><a href="<%=act_photo_path+"?id=#{@activity.id}" %>">活动相册</a></li>
         <li><a>活动日志</a></li>
       </ul>
     </div>
@@ -237,23 +243,23 @@
 
   <div class="pBody clearfix well">
   <div class="pLeft fl">
-    <div id="pQuick" class="pQuick clearfix"><a id="pqFace" href="http://en.gravatar.com/" target="_blank" title="头像" class="pbg pqFace"><img id="myface" src="home_files/7ba062b59a726dd93c0774dce3e284ad.jpg" height="110" width="110"></a><a href="content.html" title="发布文字" class="pbg pqWord"></a><a href="content.html" title="发布图片" class="pbg pqPic"></a><a href="content.html" title="发布视频" class="pbg pqVideo"></a><a href="content.html" title="分享" class="pbg pqB"></a></div>
+    <div id="pQuick" class="pQuick clearfix"><a id="pqFace" href="http://en.gravatar.com/" target="_blank" title="头像" class="pbg pqFace"><img id="myface" src="home_files/7ba062b59a726dd93c0774dce3e284ad.jpg" height="110" width="110"></a><a href="<%=comment_path+"?id=#{@activity.id}"%>" title="发布文字" class="pbg pqWord"></a><a href="<%=picture_new_path+"?id=#{@activity.id}"%>" title="发布图片" class="pbg pqPic"></a><a href="content.html" title="发布视频" class="pbg pqVideo"></a><a href="content.html" title="分享" class="pbg pqB"></a></div>
     <div id="pList" class="pList clearfix">
-    <form class="">
-          <form class="well">
-              <ul class="nav">
-                </br>
-            </br><li>2012年8月12日 &nbsp;&nbsp;&nbsp;<a href="#" style="display:inline-block">舌尖上的昆明</a> &nbsp;&nbsp;&nbsp;上传了6张照片到&nbsp;&nbsp;&nbsp;<a href="activity_001_photos.html" style="display:inline-block">活动相册</a></li>
-          </br><li>2012年8月01日 &nbsp;&nbsp;&nbsp;<a href="#" style="display:inline-block">舌尖上的昆明</a> &nbsp;&nbsp;&nbsp;留言说&nbsp;&nbsp;&nbsp;<a href="#" style="display:inline-block">@小雪是吃货 @阿浩 @小西西 @小米爱杰伦 @琪琪</a>&nbsp;&nbsp;&nbsp;明天上午11点，金马碧鸡坊集合！过桥米线、铜锅洋芋饭、牛蛙火锅，一天全为吃！</li>
-              </br><li>2012年8月10日 &nbsp;&nbsp;&nbsp;<a href="#" style="display:inline-block">小西西</a> &nbsp;&nbsp;&nbsp;参加了本活动</li>
-            </br><li>2012年8月05日 &nbsp;&nbsp;&nbsp;<a href="#" style="display:inline-block">阿浩</a> &nbsp;&nbsp;&nbsp;参加了本活动</li>
-          </br><li>2012年8月03日 &nbsp;&nbsp;&nbsp;<a href="#" style="display:inline-block">琪琪</a> &nbsp;&nbsp;&nbsp;参加了本活动</li>
-          </br><li>2012年8月01日 &nbsp;&nbsp;&nbsp;<a href="#" style="display:inline-block">舌尖上的昆明</a> &nbsp;&nbsp;&nbsp;留言说&nbsp;&nbsp;&nbsp;<a href="#" style="display:inline-block">@小雪是吃货</a>&nbsp;&nbsp;&nbsp;下周末吧，过桥米线、铜锅洋芋饭、牛蛙火锅，一天全为吃！</li>
-          </br><li>2012年7月31日 &nbsp;&nbsp;&nbsp;<a href="#" style="display:inline-block">小雪是吃货</a> &nbsp;&nbsp;&nbsp;留言说&nbsp;&nbsp;&nbsp;第一次活动什么时候开始啊？</li>
-            </br><li>2012年7月27日 &nbsp;&nbsp;&nbsp;<a href="#" style="display:inline-block">小雪是吃货</a> &nbsp;&nbsp;&nbsp;参加了本活动</li>
-            </br><li>2012年7月26日 &nbsp;&nbsp;&nbsp;<a href="#" style="display:inline-block">小米爱杰伦</a> &nbsp;&nbsp;&nbsp;参加了本活动</li>
-              </br><li>2012年7月20日 &nbsp;&nbsp;&nbsp;<a href="#" style="display:inline-block">舌尖上的昆明</a> &nbsp;&nbsp;&nbsp;创建了本活动</li>                 
-            </form>
+   	 	<% @acts_comments.each do |comment|%>
+        <dl class="clearfix">
+          <dt><%= image_tag comment[:user].photo.url(:thumb),height:"80", width:"80" %>
+            <div class="dtLink"><a href="#" title="发私信" target="wujb" class="pbg faceMsg"></a><a name="addfriend" href="#" title="加好友" class="pbg faceFriend"></a></div>
+          </dt>
+          <dd class="clearfix">
+            <div class="pbg ddTop">
+              <div class="pbg ddTopR"></div>
+            </div>
+            <h2 class="clearfix"><a href="#" target="wujb"><%=comment[:type]%></a><a href="#" target="wujb" class="fr bluea"><%=comment[:user].name%></a></h2>
+            <div class="ddContent fl wordContent"><%=comment[:content]%></div>
+            <div class="ddBottom clearfix"><span class="ftgray"><%= comment[:created_date]%><a href="#" target="wujb" class="graya">评论(0)</a><a href="#" target="wujb" class="graya">喜欢(0)</a><a name="love" href="#" title="我喜欢" class="pbg ddLove pinka">我喜欢</a></span></div>
+          </dd>
+        
+		<% end%>
     </div>
     <div class="page clearfix" style="position:relative;top:50px"><span>共<b class="ftblue"></b>篇，当前 <b class="ftblue"></b>页 </span><a href="#" class="pbg">下一页</a><a href="javascript:;" class="pbg dis">上一页</a></div>
   </div>
@@ -261,20 +267,18 @@
     <div class="pbg prLove grayborder"><a href="#" class="pbg">活动介绍</a>
       <ul class="nav nav-list"> 
               <br>
-              <li>
+              
               	<!-- 如果有活动图片的话，显示第一张活动图片 -->
 				<% if @activity.photos.any? %>
 					<% p = @activity.photos[0]%>
-	           	 	<ul class="thumbnails">
-	                	<div class="thumbnail">
-	                  	  <%= image_tag p.image.url %><br>
-	                  		<h5> 由<%= link_to @user.name, @user %>上传<br></h5>
+	           	 	
+	                  	  <li><%= image_tag p.image.url,width:"193",height:"150" %></li><br>
+	                  		<h5> 由“<%=@user.name%>”上传<br></h5>
 	                  		<p><%= p.description %></p>
-	                	</div>
-	            	</ul>
+	                	
 				<%end%>
 				
-              </li></br>
+              </br>
               <li><%=@activity.content%></li>
 		  		</br>
         

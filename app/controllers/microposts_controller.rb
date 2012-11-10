@@ -5,7 +5,8 @@ class MicropostsController < ApplicationController
 
   def create
     @micropost = current_user.microposts.build(params[:micropost])
-    @activity_id = params[:activity_id]
+    @activity_id = params[:micropost][:activity_id].to_i
+    puts params[:micropost][:activity_id]
     # puts "--------------------------------------------"
     # puts @activity_id
     # puts "--------------------------------------------"
@@ -18,18 +19,18 @@ class MicropostsController < ApplicationController
         @micropost  = @activity.microposts.build(user_id: @user.id)
         @creator = @activity.creator
         flash[:success] = "成功发布评论！"
-        redirect_to activities_path+"/#{@activity_id}"
+        redirect_to show_act_path+"?id=#{@activity_id}"
       else
         @feed_items = []
-        render 'static_pages/home'
+        redirect_to show_act_path+"?id=#{@activity_id}"
       end
     else
       if @micropost.save
         flash[:success] = "成功发布说说！"
-        redirect_to root_path
+        redirect_to show_act_path+"?id=#{@activity_id}"
       else
         @feed_items = []
-        render 'static_pages/home'
+        redirect_to show_act_path+"?id=#{@activity_id}"
       end
     end
 

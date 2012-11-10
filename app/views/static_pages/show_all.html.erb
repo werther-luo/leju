@@ -84,8 +84,8 @@
               
               <li><a href="<%=map_path%>">地  图</a>           
               </li>
-              <li><a href="activity_home.htm">活  动</a></li>
-              <li  class="active"><a href="#">个人主页</a></li>
+              
+              <li  class="active"><a href="#">活  动</a></li>
               <li><a href="friends.html">好  友</a></li>
             </ul>
 
@@ -227,6 +227,24 @@
     <div id="pList" class="pList clearfix">
       
       
+		<% @all_comments.each do |comment|%>
+        <dl class="clearfix">
+          <dt><%= image_tag comment[:user].photo.url(:thumb),height:"80", width:"80" %>
+            <div class="dtLink"><a href="#" title="发私信" target="wujb" class="pbg faceMsg"></a><a name="addfriend" href="#" title="加好友" class="pbg faceFriend"></a></div>
+          </dt>
+          <dd class="clearfix">
+            <div class="pbg ddTop">
+              <div class="pbg ddTopR"></div>
+            </div>
+            <h2 class="clearfix"><a href="#" target="wujb"><%=comment[:type]%></a><a href="#" target="wujb" class="fr bluea"><%=comment[:user].name%></a></h2>
+            <div class="ddContent fl wordContent"><%=comment[:content]%></div>
+            <div class="ddBottom clearfix"><span class="ftgray"><%=comment[:created_date] %><a href="#" target="wujb" class="graya">评论(0)</a><a href="#" target="wujb" class="graya">喜欢(0)</a><a name="love" href="#" title="我喜欢" class="pbg ddLove pinka">我喜欢</a></span></div>
+          </dd>
+        </dl>
+		<% end %>
+		
+		
+		
       <dl class="clearfix">
         <dt><img src="home_files/7860c2c35842e44a757bcc43a45157c5.jpg" height="80" width="80">
           <div class="dtLink"><a href="http://wujb.cnodejs.net/message/send/508b4336bd6e53f217000151" title="发私信" target="wujb" class="pbg faceMsg"></a><a name="addfriend" href="http://wujb.cnodejs.net/friends/add/508b4336bd6e53f217000151" title="加好友" class="pbg faceFriend"></a></div>

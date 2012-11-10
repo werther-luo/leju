@@ -226,6 +226,7 @@
             <td class="tabHead">正文内容</td>
             <td colspan="2">
 				<%= f.text_area :content, maxlength: "300", class: "textInput textTextarea", placeholder: "发表说说。。。" %>
+				<div><%= f.hidden_field :activity_id %></div>
 			</td>
           </tr>
           <tr>

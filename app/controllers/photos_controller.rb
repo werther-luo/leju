@@ -20,7 +20,7 @@ class PhotosController < ApplicationController
 	    @creator = @activity.creator
 	    @users = @activity.act_followers.paginate(page: params[:page])
 	    @microposts = @activity.microposts.paginate(page: params[:page])
-	  	redirect_to activities_path+"/#{@activity_id}"
+	  	redirect_to show_act_path+"?id=#{@activity_id}"
     else
       	flash[:failure] = "图片上传失败！"
 	   	@user = current_user
@@ -30,7 +30,7 @@ class PhotosController < ApplicationController
 	    @creator = @activity.creator
 	    @users = @activity.act_followers.paginate(page: params[:page])
 	    @microposts = @activity.microposts.paginate(page: params[:page])
-	  	redirect_to activities_path+"/#{@activity_id}"
+	  	redirect_to picture_new_path+"?id=#{@activity_id}"
     end
 
   end
