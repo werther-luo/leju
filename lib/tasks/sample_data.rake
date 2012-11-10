@@ -9,14 +9,14 @@ end
 
 def make_users
   admin = User.create!(name:     "Example User",
-                       email:    "example@railstutorial.org",
+                       email:    "a@b.com",
                        password: "foobar",
                        password_confirmation: "foobar")
   admin.toggle!(:admin)
   99.times do |n|
     name  = Faker::Name.name
-    email = "example-#{n+1}@railstutorial.org"
-    password  = "password"
+    email = "a-#{n+1}@b.cn"
+    password  = "foobar"
     User.create!(name:     name,
                  email:    email,
                  password: password,

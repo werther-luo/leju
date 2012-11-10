@@ -18,13 +18,13 @@ class SessionsController < ApplicationController
       redirect_to map_path
     else
       flash.now[:error] = 'Invalid email/password combination'
-      render 'new'
+      redirect_to map_path
     end
   end
 
   def destroy
     sign_out
-    redirect_to root_path
+    redirect_to login_path
   end
 
   def set_signed_address(lat, lng, user_id)

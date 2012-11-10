@@ -82,18 +82,20 @@
           <div class="nav-collapse"> 
             <ul class="nav nav-pills">
               
-              <li><a href="map.html">地  图</a>           
+              <li><a href="<%=map_path%>">地  图</a>           
               </li>
-              <li class="active"><a href="activity_home.htm">活  动</a></li>
-              <li><a href="personalpage.html">个人主页</a></li>
+              <li><a href="activity_home.htm">活  动</a></li>
+              <li  class="active"><a href="#">个人主页</a></li>
               <li><a href="friends.html">好  友</a></li>
             </ul>
 
             <ul class="nav nav-pills pull-right">
             <li class="guess-button"><a href="#"><i class="icon-upload icon-white"></i> 活动推荐</a></li> 
-            <li><a href="account_setting.html"><i class="icon-cog icon-white"></i> 设置</a></li>
-            <li><a href="#"><i class="icon-off icon-white"></i> 退出</a></li>
-                  
+           <li><%= link_to "设置", user_setting_path(current_user) %></li>
+                    <li><%= link_to "退出", signout_path, method: "delete" %></li>
+
+                    <li><a href="#">用户名:<%=@current_user.name%></a></li>
+                    
 
             </ul>           
 
