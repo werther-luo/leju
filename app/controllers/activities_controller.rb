@@ -81,15 +81,23 @@ class ActivitiesController < ApplicationController
     #puts "------测试current_user：" + current_user.name + "./" + current_user.email
     results = Hash.new
     results[:adjActs] = objs_to_hash(@neighborActs)
+    # puts "------what the fuck,fuckfuckfuckfuckfuckfuckfuckfuckfuckfuck"
     results[:relaActs] = objs_to_hash(current_user.followed_acts)
+    # puts "------what the fuck,fuckfuckfuckfuckfuckfuckfuckfuckfuckfuck"
     results[:ownActs] = objs_to_hash(current_user.activities)
+    # puts "------what the fuck,fuckfuckfuckfuckfuckfuckfuckfuckfuckfuck"
+
     # puts results.to_json
     # respond_to do |format|
 
-    # puts results.to_json
+    puts results.to_json
     respond_with results.to_json
     # end
 
+  end
+
+  def serach_by_title_and_time
+    @title = "temp value" #params[:title_key]
   end
 
   def show
@@ -110,6 +118,7 @@ class ActivitiesController < ApplicationController
     redirect_to show_activity_path
   end
 
+  #GoogleMapAPI得到地名，传入经纬度参数
   def getAddressLine(lat, lng)
     puts "--Enter getAddressLine method"
     @url = "http://ditu.google.cn/maps/geo?output=json&key=abcdef&q=#{lat},#{lng}"
@@ -124,6 +133,7 @@ class ActivitiesController < ApplicationController
     return @addressLine
   end
 
+  #根据传过来的参数使用GoogleMapApi请求地址
   def getAddress(lat, lng)
     puts "--Enter getAddress method"
     @url = "http://ditu.google.cn/maps/geo?output=json&key=abcdef&q=#{lat},#{lng}"
@@ -135,20 +145,24 @@ class ActivitiesController < ApplicationController
     return @address
   end
 
+  #把活动数组转换成哈希表
   def objs_to_hash(objs)
+    puts "------what the fuck,fuckfuckfuckfuckfuckfuckfuckfuckfuckfuck"
+    # puts "--------enter objs_to_hash method"
     acts = Array.new
     objs.each do |var|
       act_hash = Hash.new
       act_hash[:id] = var.id
       act_hash[:title] = var.title
-      act_hash[:time_start] = var.time_start
-      act_hash[:time_end] = var.time_end
+      act_hash[:time_start] = var.time_start.to_s(:due_time)
+      puts "----------ppppppppppppppppppppppppppppppppppppppppppppp"
+      act_hash[:time_end] = var.time_end.to_s(:due_time)
       act_hash[:content] = var.content 
       act_hash[:address] = var.address.address 
       act_hash[:address_line] = var.address.addressLine
       act_hash[:ps] = var.back_up 
       act_hash[:state] = var.state 
-      act_hash[:created_at] = var.created_at 
+      act_hash[:created_at] = var.created_at.to_s(:due_time)
       act_hash[:creator_id] = var.user_id
       act_hash[:creator_name] = User.find(var.user_id).name
       act_hash[:creator_photo] = User.find(var.user_id).photo.url(:thumb)
@@ -157,6 +171,7 @@ class ActivitiesController < ApplicationController
       act_hash[:type] = var.tags[0].content
       acts << act_hash
     end
+    puts "-----------end of the moethod"
     acts
   end
 
@@ -203,19 +218,19 @@ class ActivitiesController < ApplicationController
     }
   end
 
-
+  #把单个活动数据转换成hash表
   def obj_to_hash(var)
     act_hash = Hash.new
     act_hash[:id] = var.id
     act_hash[:title] = var.title
-    act_hash[:time_start] = var.time_start
-    act_hash[:time_end] = var.time_end
+    act_hash[:time_start] = var.time_start.to_s(:due_time)
+    act_hash[:time_end] = var.time_end.to_s(:due_time)
     act_hash[:content] = var.content 
     act_hash[:address] = var.address.address 
     act_hash[:address_line] = var.address.addressLine
     act_hash[:ps] = var.back_up 
     act_hash[:state] = var.state 
-    act_hash[:created_at] = var.created_at 
+    act_hash[:created_at] = var.created_at.to_s(:due_time) 
     act_hash[:creator_id] = var.user_id
     act_hash[:creator_name] = User.find(var.user_id).name
     act_hash[:creator_photo] = User.find(var.user_id).photo.url(:thumb)

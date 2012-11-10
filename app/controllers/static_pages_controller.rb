@@ -2,7 +2,7 @@
 class StaticPagesController < ApplicationController
   require 'net/http'
   require 'json'
-	before_filter :signed_in_user
+	before_filter :signed_in_user,:except => [:login,:register]
 	respond_to :html, :js, :json
   def home
     if signed_in?
