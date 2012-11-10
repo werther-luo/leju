@@ -1,77 +1,86 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en-US">
 <head>
-<title>乐聚 活动主页</title>
-  <meta charset="UTF-8">
+	<meta charset="UTF-8">
   <meta http-equiv="content-script-type" content="text/javascript">
   <meta http-equiv="content-style-type" content="text/css">
-
-  <link type="text/css" rel="stylesheet" href="css/b.css">
-  <link href="css/bootstrap.css" rel="stylesheet"/>
-  <link href="css/bootstrap-responsive.css" rel="stylesheet">
-  <link rel="shortcut icon" href="Pictures/favicon.ico"> 
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="Pictures/apple-touch-icon-144-precomposed.png"> 
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="Pictures/apple-touch-icon-114-precomposed.png"> 
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="Pictures/apple-touch-icon-72-precomposed.png"> 
-  <link rel="apple-touch-icon-precomposed" href="Pictures/apple-touch-icon-57-precomposed.png">
+	<title><%=@activity.title %></title>
   
+	<link href="css/bootstrap.css" rel="stylesheet"/>
+   <link type="text/css" rel="stylesheet" href="css/b.css">
+ 
+	<style type="text/css"> 
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+        margin: 0;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 13px;
+        line-height: 18px;
+        color: #333333;
+        background-color: #ffffff;
+      }
+      
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+    </style> 
+
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link rel="shortcut icon" href="Pictures/favicon.ico"> 
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="Pictures/apple-touch-icon-144-precomposed.png"> 
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="Pictures/apple-touch-icon-114-precomposed.png"> 
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="Pictures/apple-touch-icon-72-precomposed.png"> 
+    <link rel="apple-touch-icon-precomposed" href="Pictures/apple-touch-icon-57-precomposed.png"> 
+
+
+    <script type="text/javascript">
+    function cc(){
+      alert("成功参加！");
+    }
+    </script>
 
 </head>
-<body style="padding-top:30px;" class="whiteBg">
-  <!--
-<div class="top alpha">
-  <div class="topBox"><a href="map.html" title="返回首页" class="pbg plogo"></a>
-    <div class="pNav"><a href="activity_home.htm" title="首页" class="pbg navHome"></a><a href="http://wujb.cnodejs.net/publish" title="发布内容" class="pbg navContent"></a><a href="http://wujb.cnodejs.net/message" title="私信" class="pbg navMsg"></a><a href="http://wujb.cnodejs.net/friends" title="好友" class="pbg navFriend"></a><a href="http://wujb.cnodejs.net/search" title="搜索" class="pbg navSearch"></a><a href="http://wujb.cnodejs.net/setting" title="设置" class="pbg navSet"></a><a href="http://wujb.cnodejs.net/home/logout" title="退出" class="pbg navLogout"></a>
-      <div class="pbg pnNow pnIndex"></div>
-      <div class="pbg unRead"><span id="unRead"></span>
-        <div class="unReadRight pbg"></div>
-      </div>
-    </div>
-  </div>
-</div>
--->
+<body class="whiteBg">
 
-<!-- Container for an overlay: 这个div是用来做发布活动还有乐聚猜弹出的遮罩的--> 
+  <!-- Container for an overlay: --> 
   <div class="ow-overlay ow-closed"></div> 
 
-  <!-- Container for a modal window: found activity 弹出发布活动的区域部分，主要就是modal这个class控制 modal_a只是我单独添的class名 就是区分一下不同modal的 其他的都是发布活动的布局还有标签--> 
+  <!-- Container for a modal window: found activity--> 
   <div class="modal ow-closed well modal_a" id="id_foundactivity_container">
     <button type="button" class="btn-mini pull-right close_a-button"><i class="icon-remove"></i></button>
     <h3>&nbsp;&nbsp;发布活动</h3>
     <ul></ul>
     <ul>
-      <li>活动名称<input type="text" id="activity-name-input" class="input-xlarge" placeholder="6-20个汉字" style="position:relative;left:30px;"><a style="position:relative;left:60px;">*</a></li>
-      <!-- id="date-input"是日历1的特效 请见calendar.js的文件-->
+      <li>活动名称<input type="text" class="input-xlarge" placeholder="6-20个汉字" style="position:relative;left:30px;"><a style="position:relative;left:60px;">*</a></li>
       <li>活动时间<input type="text" id="date-input" class="input-xlarge" placeholder="请选择活动开始时间" style="position:relative;left:30px;"/><a style="position:relative;left:60px;">*</a></li>
-      <li>活动类型<input type="text" id="activity-type-input" class="input-xlarge" placeholder="6-20个汉字" style="position:relative;left:30px;"><a style="position:relative;left:60px;">*</a></li>
-      <li>活动地点<input type="text" id="activity-place-input" class="input-xlarge" placeholder="请输入活动地点" style="position:relative;left:30px;"><a style="position:relative;left:60px;">*</a></li>
-      <li>活动人数<input type="text" id="activity-number-input" class="input-xlarge" placeholder="请输入活动人数" style="position:relative;left:30px;"><a style="position:relative;left:60px;">*</a></li>
-      <li>邀请人员<input type="text" id="activity-people-input" class="input-xlarge" placeholder="请邀请人员参与活动" style="position:relative;left:30px;"><a style="position:relative;left:60px;">*</a></li>
+      <li>活动类型<input type="text" class="input-xlarge" placeholder="6-20个汉字" style="position:relative;left:30px;"><a style="position:relative;left:60px;">*</a></li>
+      <li>活动地点<input type="text" class="input-xlarge" placeholder="请输入活动地点" style="position:relative;left:30px;"><a style="position:relative;left:60px;">*</a></li>
+      <li>活动人数<input type="text" class="input-xlarge" placeholder="请输入活动人数" style="position:relative;left:30px;"><a style="position:relative;left:60px;">*</a></li>
+      <li>邀请人员<input type="text" class="input-xlarge" placeholder="请邀请人员参与活动" style="position:relative;left:30px;"><a style="position:relative;left:60px;">*</a></li>
       <p></p>
-      <li>活动描述<textarea class="span5" name="textArea1" id="activity-description-input" cols="30" rows="2" placeholder="请对活动进行适当描述" style="position:relative;left:30px;"></textarea><a style="position:relative;left:60px;">*</a></li>
+      <li>活动描述<textarea class="span5" name="textArea1" id="textArea1" cols="30" rows="2" placeholder="请对活动进行适当描述" style="position:relative;left:30px;"></textarea><a style="position:relative;left:60px;">*</a></li>
       <p></p>
-      <li>备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注<textarea class="span5" name="textArea1" id="activity-ps-input" cols="30" rows="2" placeholder="请适当的添加备注" style="position:relative;left:30px;"></textarea></li>
+      <li>备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注<textarea class="span5" name="textArea1" id="textArea1" cols="30" rows="2" placeholder="请适当的添加备注" style="position:relative;left:30px;"></textarea></li>
       <p></p>
-      <p><button type="submit" class="btn-large close_c-button" id="activity-submit" style="position:relative;left:260px;">提交</button></p>
+      <p><button type="submit" class="btn-large close_c-button" style="position:relative;left:260px;">提交</button></p>
     </ul>
     </div>
 
-<!-- Container for a modal window: leju guess 下面这个div跟上面的基本相同，是给乐聚猜 就是活动推荐用的--> 
-    <div class="modal_b ow-closed well modal" id="id_recommend_container">
+<!-- Container for a modal window: leju guess--> 
+    <div class="modal_b ow-closed well modal" id="id_lejuguess_container">
     <button type="button" class="btn-mini pull-right close_b-button"><i class="icon-remove"></i></button>
     <h3>&nbsp;&nbsp;活动推荐</h3>
     <ul></ul>
     <ul>
       </br></br></br></br>
-      <li>活动主题<input type="text" id="recommend-title-input" class="input-xlarge" placeholder="6-20个汉字" style="position:relative;left:30px;"><a style="position:relative;left:60px;">*</a></li>
+      <li>活动主题<input type="text" class="input-xlarge" placeholder="6-20个汉字" style="position:relative;left:30px;"><a style="position:relative;left:60px;">*</a></li>
       </br></br></br></br>
-      <!-- 下面id=“demo2”就是日历2的特效-->
       <li>活动时间<input type="text" id="demo2" class="input-xlarge" placeholder="请选择活动开始时间" style="position:relative;left:30px;"/><a style="position:relative;left:60px;">*</a></li>
       </br></br></br></br>
-      <p><button type="submit" class="btn-large close_d-button" id="recommend-submit" style="position:relative;left:260px;">活动推荐</button></p>
+      <p><button type="submit" class="btn-large close_d-button" style="position:relative;left:260px;">活动推荐</button></p>
     </ul>
     </div>
-
 
 
 <!-- fixed top bar--> 
@@ -215,88 +224,93 @@
 <!-- chatwindow 下面的东西是左边的聊天窗，内容也在chatwindow.js里--> 
 <!-- end chatwindow-->
 
+      <div style="position:relative;left:30px;"><h2><%=@activity.title %></h2></br></div>      
+      <div class="span12">
+      <ul class="nav nav-pills">
+        <li class="active"><a href="activity_002_index.html">主页</a></li>
+        <li><a>活动资料</a></li>
+        <li><a href="#">活动相册</a></li>
+        <li><a>活动日志</a></li>
+      </ul>
+    </div>
 
 
-
-
-<div class="pBody clearfix well">
+  <div class="pBody clearfix well">
   <div class="pLeft fl">
     <div id="pQuick" class="pQuick clearfix"><a id="pqFace" href="http://en.gravatar.com/" target="_blank" title="头像" class="pbg pqFace"><img id="myface" src="home_files/7ba062b59a726dd93c0774dce3e284ad.jpg" height="110" width="110"></a><a href="content.html" title="发布文字" class="pbg pqWord"></a><a href="content.html" title="发布图片" class="pbg pqPic"></a><a href="content.html" title="发布视频" class="pbg pqVideo"></a><a href="content.html" title="分享" class="pbg pqB"></a></div>
     <div id="pList" class="pList clearfix">
-      
-      
-      <dl class="clearfix">
-        <dt><img src="home_files/7860c2c35842e44a757bcc43a45157c5.jpg" height="80" width="80">
-          <div class="dtLink"><a href="http://wujb.cnodejs.net/message/send/508b4336bd6e53f217000151" title="发私信" target="wujb" class="pbg faceMsg"></a><a name="addfriend" href="http://wujb.cnodejs.net/friends/add/508b4336bd6e53f217000151" title="加好友" class="pbg faceFriend"></a></div>
-        </dt>
-        <dd class="clearfix">
-          <div class="pbg ddTop">
-            <div class="pbg ddTopR"></div>
-          </div>
-          <h2 class="clearfix"><a href="#" target="wujb">支持一下</a><a href="#" target="wujb" class="fr bluea">8***om</a></h2>
-          <div class="ddContent fl wordContent">不错哦 真的</div>
-          <div class="ddBottom clearfix"><span class="ftgray">2012-10-27 10:15:20<a href="#" target="wujb" class="graya">评论(0)</a><a href="#" target="wujb" class="graya">喜欢(0)</a><a name="love" href="#" title="我喜欢" class="pbg ddLove pinka">我喜欢</a></span></div>
-        </dd>
-      </dl>
-      
-      <dl class="clearfix">
-        <dt><img src="home_files/11d0501f99fe8d760924adf162eb9738.jpg" height="80" width="80">
-          <div class="dtLink"><a href="#" title="发私信" target="wujb" class="pbg faceMsg"></a><a name="addfriend" href="#" title="加好友" class="pbg faceFriend"></a></div>
-        </dt>
-        <dd class="clearfix">
-          <div class="pbg ddTop">
-            <div class="pbg ddTopR"></div>
-          </div>
-          <h2 class="clearfix"><a href="#" target="wujb">哈哈哈</a><a href="#" target="wujb" class="fr bluea">3***om</a></h2>
-          <div class="ddContent fl wordContent">这站真心不错啊啊  赞一个</div>
-          <div class="ddBottom clearfix"><span class="ftgray">2012-10-25 13:33:52<a href="#" target="wujb" class="graya">评论(0)</a><a href="#" target="wujb" class="graya">喜欢(0)</a><a name="love" href="#" title="我喜欢" class="pbg ddLove pinka">我喜欢</a></span></div>
-        </dd>
-      </dl>
-      
-      <dl class="clearfix">
-        <dt><img src="home_files/7d4fb3ec5f6c4ab3974ebd52cf25341a.jpg" height="80" width="80">
-          <div class="dtLink"><a href="#" title="发私信" target="wujb" class="pbg faceMsg"></a><a name="addfriend" href="#" title="加好友" class="pbg faceFriend"></a></div>
-        </dt>
-        <dd class="clearfix">
-          <div class="pbg ddTop">
-            <div class="pbg ddTopR"></div>
-          </div>
-          <h2 class="clearfix"><a href="#" target="wujb">支持。。。</a><a href="#" target="wujb" class="fr bluea">s***om</a></h2>
-          <div class="ddContent fl wordContent">支持。。。。。。。。</div>
-          <div class="ddBottom clearfix"><span class="ftgray">2012-10-21 01:22:57<a href="#" target="wujb" class="graya">评论(1)</a><a href="#" target="wujb" class="graya">喜欢(1)</a><a name="love" href="#" title="我喜欢" class="pbg ddLove pinka">我喜欢</a></span></div>
-        </dd>
-      </dl>
+    <form class="">
+          <form class="well">
+              <ul class="nav">
+                </br>
+            </br><li>2012年8月12日 &nbsp;&nbsp;&nbsp;<a href="#" style="display:inline-block">舌尖上的昆明</a> &nbsp;&nbsp;&nbsp;上传了6张照片到&nbsp;&nbsp;&nbsp;<a href="activity_001_photos.html" style="display:inline-block">活动相册</a></li>
+          </br><li>2012年8月01日 &nbsp;&nbsp;&nbsp;<a href="#" style="display:inline-block">舌尖上的昆明</a> &nbsp;&nbsp;&nbsp;留言说&nbsp;&nbsp;&nbsp;<a href="#" style="display:inline-block">@小雪是吃货 @阿浩 @小西西 @小米爱杰伦 @琪琪</a>&nbsp;&nbsp;&nbsp;明天上午11点，金马碧鸡坊集合！过桥米线、铜锅洋芋饭、牛蛙火锅，一天全为吃！</li>
+              </br><li>2012年8月10日 &nbsp;&nbsp;&nbsp;<a href="#" style="display:inline-block">小西西</a> &nbsp;&nbsp;&nbsp;参加了本活动</li>
+            </br><li>2012年8月05日 &nbsp;&nbsp;&nbsp;<a href="#" style="display:inline-block">阿浩</a> &nbsp;&nbsp;&nbsp;参加了本活动</li>
+          </br><li>2012年8月03日 &nbsp;&nbsp;&nbsp;<a href="#" style="display:inline-block">琪琪</a> &nbsp;&nbsp;&nbsp;参加了本活动</li>
+          </br><li>2012年8月01日 &nbsp;&nbsp;&nbsp;<a href="#" style="display:inline-block">舌尖上的昆明</a> &nbsp;&nbsp;&nbsp;留言说&nbsp;&nbsp;&nbsp;<a href="#" style="display:inline-block">@小雪是吃货</a>&nbsp;&nbsp;&nbsp;下周末吧，过桥米线、铜锅洋芋饭、牛蛙火锅，一天全为吃！</li>
+          </br><li>2012年7月31日 &nbsp;&nbsp;&nbsp;<a href="#" style="display:inline-block">小雪是吃货</a> &nbsp;&nbsp;&nbsp;留言说&nbsp;&nbsp;&nbsp;第一次活动什么时候开始啊？</li>
+            </br><li>2012年7月27日 &nbsp;&nbsp;&nbsp;<a href="#" style="display:inline-block">小雪是吃货</a> &nbsp;&nbsp;&nbsp;参加了本活动</li>
+            </br><li>2012年7月26日 &nbsp;&nbsp;&nbsp;<a href="#" style="display:inline-block">小米爱杰伦</a> &nbsp;&nbsp;&nbsp;参加了本活动</li>
+              </br><li>2012年7月20日 &nbsp;&nbsp;&nbsp;<a href="#" style="display:inline-block">舌尖上的昆明</a> &nbsp;&nbsp;&nbsp;创建了本活动</li>                 
+            </form>
     </div>
-    <div class="page clearfix"><span>共<b class="ftblue"></b>篇，当前 <b class="ftblue"></b>页 </span><a href="#" class="pbg">下一页</a><a href="javascript:;" class="pbg dis">上一页</a></div>
+    <div class="page clearfix" style="position:relative;top:50px"><span>共<b class="ftblue"></b>篇，当前 <b class="ftblue"></b>页 </span><a href="#" class="pbg">下一页</a><a href="javascript:;" class="pbg dis">上一页</a></div>
   </div>
   <div class="pRight fr">
-    <div class="pbg prLove grayborder"><a href="#" class="pbg">您参加的活动</a>
-    <%= render @joined_acts %>
-      
-    </div>
-    <div class="pbg prLove prFriend grayborder"><a href="#" class="pbg">您创建的活动</a>
-	<%= render @owned_acts %>
-	</div>
+    <div class="pbg prLove grayborder"><a href="#" class="pbg">活动介绍</a>
+      <ul class="nav nav-list"> 
+              <br>
+              <li>
+              	<!-- 如果有活动图片的话，显示第一张活动图片 -->
+				<% if @activity.photos.any? %>
+					<% p = @activity.photos[0]%>
+	           	 	<ul class="thumbnails">
+	                	<div class="thumbnail">
+	                  	  <%= image_tag p.image.url %><br>
+	                  		<h5> 由<%= link_to @user.name, @user %>上传<br></h5>
+	                  		<p><%= p.description %></p>
+	                	</div>
+	            	</ul>
+				<%end%>
+				
+              </li></br>
+              <li><%=@activity.content%></li>
+		  		</br>
+        
+            </ul> 
+        </div>
+    <div class="pbg prLove prFriend grayborder"><a href="#" class="pbg">共有“<%=@activity.act_followers.count%>”个用户参加</a>
+            <ul class="nav nav-list"> 
+             </br>
+	         <% if @activity.act_followers.any? %>
+	           <li><%= render @activity.act_followers%></li>
+	         <% end %>   
+              
+            </ul> 
+          </div><!--/.well -->
+        </div>
   </div>
 </div>
 <input id="err" value="" type="hidden">
 <input id="suc" value="" type="hidden">
-<div class="foot">
-  <div class="footBox"><span>MileStone_42 版权所有 ©2011-2012</span><span>email: 42thcoder@gmail.com</span></div>
-</div>
-<script src="js/ga.js" async="" type="text/javascript"></script><script src="js/wujb"></script>
-<div id="tip" class="baseTip"><span class="btBox"></span></div>
-<script src="js/h.js" type="text/javascript"></script>
 
-    
-  <script type="text/javascript" src="js/jquery.js"></script>
-  <script type="text/javascript" src="js/jquery.omniwindow.js"></script>
-  <script type="text/javascript" src="js/calendar.js"></script>
-  <script type="text/javascript" src="js/chatwindow.js"></script>
-  <script type="text/javascript" src="js/normalhead.js"></script> 
+ 
+      <footer>
 
+       <div class="foot">
+          <div class="footBox"><span>MileStone_42 版权所有 ©2011-2012</span><span>email: 42thcoder@gmail.com</span></div>
+        </div>
+      </footer>
+    <script src="js/ga.js" async="" type="text/javascript"></script><script src="home_files/a"></script>
+    <script src="js/h.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.omniwindow.js"></script>
+    <script type="text/javascript" src="js/calendar.js"></script>
+    <script type="text/javascript" src="js/chatwindow.js"></script>
+    <script type="text/javascript" src="js/normalhead.js"></script> 
     <script src="js/bootstrap-transition.js"></script> 
-	    <script src="js/bootstrap-alert.js"></script> 
+    <script src="js/bootstrap-alert.js"></script> 
     <script src="js/bootstrap-modal.js"></script> 
     <script src="js/bootstrap-dropdown.js"></script> 
     <script src="js/bootstrap-scrollspy.js"></script> 
@@ -306,6 +320,6 @@
     <script src="js/bootstrap-button.js"></script> 
     <script src="js/bootstrap-collapse.js"></script> 
     <script src="js/bootstrap-carousel.js"></script> 
-    <script src="js/bootstrap-typeahead.js"></script>   
+    <script src="js/bootstrap-typeahead.js"></script> 	
 </body>
 </html>
