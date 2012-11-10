@@ -95,9 +95,31 @@ class ActivitiesController < ApplicationController
     # end
 
   end
-
-  def serach_by_title_and_time
-    @title = "temp value" #params[:title_key]
+  
+  #搜索该用户周围的活动，返回其标题或内容与所给关键字相同的活动列表。json
+  def serach_by_title_or_content
+    @key = "as" #params[:key]
+    #得到周围的活动列表
+    puts params[:lat]
+    puts params[:lng]
+    @lat = 25.037721 #params[:lat]
+    @lng = 102.722202 #params[:lng]
+    @neighborActs = Activity.getNeighbor(@lat.to_f,@lng.to_f,1)
+    puts @neighborActs.to_json
+    @neighborActs = @neighborActs - current_user.followed_acts #除去自己已经参加的活动
+    @neighborActs = @neighborActs - current_user.activities    #除去自己创建的活动
+    puts "----------search results:"
+    puts @neighborActs.to_json
+    @del_acts = Array.new
+    @neighborActs.each do |act|
+      if !(act.title.include?(@key) or act.content.include?(@key))
+        @del_acts << act
+      end
+    end
+    @neighborActs = @neighborActs - @del_acts
+    
+    respond_with @neighborActs.to_json
+    
   end
 
   def show
