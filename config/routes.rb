@@ -55,6 +55,7 @@ SampleApp::Application.routes.draw do
   match '/show_all', to: 'static_pages#show_all'
   match '/show_act', to: 'static_pages#show_act'
   match '/comment', to: 'static_pages#comment'
+  match '/get_all_comments', to: 'static_pages#get_all_comments'
   # match '/jiepan', to: 'static_pages#jiepan'
   # The priority is based upon order of creation:
   # first created -> highest priority.
