@@ -11,7 +11,7 @@ class ActivitiesController < ApplicationController
     # 由经纬度查询地址名称，和地址
     puts "-----------lat:" + params[:lat]
     puts "-----------lng:" + params[:lng]
-    # @addressLine = getAddressLine(params[:lat], params[:lng])
+    @addressLine = getAddressLine(params[:lat], params[:lng])
     @addressSub = getAddress(params[:lat], params[:lng])
     puts "-----------before build activity  safsfa"
     # puts "-----------current_user:" + current_user.name
@@ -98,7 +98,7 @@ class ActivitiesController < ApplicationController
   
   #搜索该用户周围的活动，返回其标题或内容与所给关键字相同的活动列表。json
   def serach_by_title_or_content
-    @key = "as" #params[:key]
+    @key = params[:key]
     #得到周围的活动列表
     puts params[:lat]
     puts params[:lng]
@@ -146,8 +146,8 @@ class ActivitiesController < ApplicationController
     @url = "http://ditu.google.cn/maps/geo?output=json&key=abcdef&q=#{lat},#{lng}"
     puts "------url:" + @url
     result = Net::HTTP.get(URI.parse(@url))
-    puts "------success get results" + results
-    @addressLine = "该地址没有确切的地名"
+    puts "------success get results"
+    @addressLine = getAddress(params[:lat], params[:lng])
     @json = JSON::parse(result)
     if @json["Placemark"][0]["AddressDetails"]["Country"]["AdministrativeArea"]["Locality"]["DependentLocality"].has_key?"AddressLine"
       @addressLine =  @json["Placemark"][0]["AddressDetails"]["Country"]["AdministrativeArea"]["Locality"]["DependentLocality"]["AddressLine"][0]
@@ -262,4 +262,7 @@ class ActivitiesController < ApplicationController
     act_hash
   end
 
+  def test_all
+    Activity.all
+  end 
 end

@@ -76,6 +76,11 @@ class User < ActiveRecord::Base
     def add_tag(tag)
       InterestTagRecord.create!(user_id: self.id, tag_id: tag.id)
     end
+   
+    def self.find_test
+      sleep 10
+      self.find(:all)
+    end
 end
 # == Schema Information
 #

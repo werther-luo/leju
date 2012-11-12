@@ -66,7 +66,7 @@
 	    <tr>
 			<td>
 	      	  <form class="nav form-search input-append">    
-	                <input type="text" id="search3" class="input-small search-query input-append" placeholder="搜地点" style="position:relative;left:30px">
+	                <input type="text" id="searchPlace" class="input-small search-query input-append" placeholder="搜地点" style="position:relative;left:30px">
 					<button type="submit" id="search-submit3" class="btn"  style="position:relative;left:30px"><i class="icon-search"></i></button>
 	          </form>
 	    	</td>
@@ -149,9 +149,7 @@
 
                     <li class="active"><a href="<%=map_path%>">地  图</a>
                     </li>
-                    <li><a href="activity_home.htm">活  动</a></li>
-                    <li><a href="<%=show_all_path%>">个人主页</a></li>
-                    <li><a href="friends.html">好  友</a></li>
+                    <li><a href="<%=show_all_path%>">活  动</a></li>
                 </ul>
 
                 <ul class="nav nav-pills pull-right">
@@ -159,7 +157,7 @@
 					<li><%= link_to "设置", user_setting_path(current_user) %></li>
                     <li><%= link_to "退出", signout_path, method: "delete" %></li>
 
-                    <li><a href="#">用户名:<%=@current_user.name%></a></li>
+                    <li><%= link_to "用户名:#{@current_user.name}", user_setting_path(current_user) %></li>
                     
 
                 </ul>

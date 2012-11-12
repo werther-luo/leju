@@ -6,7 +6,7 @@ rake db:populate
 
 thin start
 
-rackup faye.ru -E production -s thin
+	rackup faye.ru -E production -s thin
 
 
 =======================================
@@ -36,3 +36,31 @@ rackup faye.ru -E production -s thin
 --新增活动之后,右下角显示会混乱
 --右下角活动列表处，第一个活动的创建人信息不能显示
 
+
+
+
+
+========================================
+===搜索接口
+========================================
+url='search'
+参数：key = "关键字"
+返回json 数据格式：
+[
+{
+"GUID":"0",
+"GUID_created_at":"0",
+"back_up":"asdfassad",
+"content":"sfasfsda",
+"created_at":"2012-11-12T11:35:39+08:00",
+"id":1,
+"pcount":5,
+"state":0,
+"time_end":"2012-11-08T00:00:00+08:00",
+"time_start":"2012-11-01T00:00:00+08:00",
+"title":"asasdfafa",
+"updated_at":"2012-11-12T11:35:39+08:00",
+"user_id":1
+}
+]
+--------注意：搜索条件使活动title或content中含有传入关键字的，返回活动列表中不包含自己创建的，

@@ -2,6 +2,8 @@ source 'http://ruby.taobao.org'
 
 gem 'rails', '3.2.8'
 gem 'faye'
+gem 'ruby-prof', :git => 'git://github.com/wycats/ruby-prof.git'
+gem 'newrelic_rpm'
 gem 'thin'
 gem 'eventmachine','1.0.0' #windows 下专用
 # gem 'jquery-rails', '2.0.2'

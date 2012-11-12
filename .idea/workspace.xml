@@ -2,17 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb1e686b-927f-4e36-ab12-9eabdd3994dc" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/picture.html" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/leju.iml" afterPath="$PROJECT_DIR$/.idea/leju.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/microposts_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/microposts_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/photos_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/photos_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/static_pages_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/static_pages_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/activities/_activity.html.erb" afterPath="$PROJECT_DIR$/app/views/activities/_activity.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/static_pages/_activity.html.erb" afterPath="$PROJECT_DIR$/app/views/static_pages/_activity.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/static_pages/comment.html.erb" afterPath="$PROJECT_DIR$/app/views/static_pages/comment.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/static_pages/show_act.html.erb" afterPath="$PROJECT_DIR$/app/views/static_pages/show_act.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/static_pages/show_all.html.erb" afterPath="$PROJECT_DIR$/app/views/static_pages/show_all.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Guardfile" afterPath="$PROJECT_DIR$/Guardfile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/activities_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/activities_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/user.rb" afterPath="$PROJECT_DIR$/app/models/user.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/models/user_spec.rb" afterPath="$PROJECT_DIR$/spec/models/user_spec.rb" />
     </list>
     <ignored path="leju.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,33 +28,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="activities_controller.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/controllers/activities_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="104" column="0" selection-start="3427" selection-end="3427" vertical-scroll-proportion="1.2">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mime_responds.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_controller/metal/mime_responds.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="269" column="0" selection-start="9628" selection-end="9628" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="attribute.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.8/lib/active_support/core_ext/class/attribute.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="80" column="0" selection-start="2926" selection-end="2926" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="read.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p194/gems/activerecord-3.2.8/lib/active_record/attribute_methods/read.rb">
           <provider selected="true" editor-type-id="text-editor">
@@ -67,55 +37,129 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="to_json.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.8/lib/active_support/core_ext/object/to_json.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="0" selection-start="819" selection-end="819" vertical-scroll-proportion="0.0">
-              <folding />
+      <file leaf-file-name="RailsDependency/#leju" pinned="false" current="true" current-in-tab="true">
+        <entry file="uml://RailsDependency/#leju">
+          <provider selected="true" editor-type-id="UmlEditorProvider">
+            <state>
+              <ID>RailsDependency</ID>
+              <OriginalElement>#leju</OriginalElement>
+              <nodes>
+                <node x="596.1256952169076" y="322.40572858731923">User</node>
+                <node x="337.0367074527252" y="705.7442992213569">InterestTagRecord</node>
+                <node x="917.5806451612902" y="145.5314238042269">Message</node>
+                <node x="917.5806451612902" y="749.9434093437152">ActTagRela</node>
+                <node x="618.4849833147944" y="97.86874304783089">Photo</node>
+                <node x="179.42602892102332" y="712.5407397107897">SignedAddress</node>
+                <node x="232.0" y="260.875">Activity</node>
+                <node x="610.5" y="801.375">Tag</node>
+                <node x="53.081717641615114" y="398.28424198053824">ActPhotoRela</node>
+                <node x="330.7708565072303" y="814.7098164627363">Address</node>
+                <node x="923.5806451612902" y="500.36475713756016">Relationship</node>
+                <node x="917.5806451612902" y="282.5314238042269">UserAcRela</node>
+                <node x="922.0806451612902" y="633.0684093437152">Micropost</node>
+              </nodes>
+              <notes />
+              <edges>
+                <edge source="Activity" target="Tag">
+                  <point x="132.5" y="94.88888888888891" />
+                  <point x="577.0" y="849.875" />
+                  <point x="-131.5" y="-0.0" />
+                </edge>
+                <edge source="User" target="Activity">
+                  <point x="-135.0" y="-160.125" />
+                  <point x="577.0" y="367.625" />
+                  <point x="132.5" y="-47.44444444444446" />
+                </edge>
+                <edge source="Activity" target="UserAcRela">
+                  <point x="132.5" y="-94.88888888888891" />
+                  <point x="577.0" y="303.75" />
+                  <point x="-76.0" y="-18.5" />
+                </edge>
+                <edge source="ActPhotoRela" target="Activity">
+                  <point x="76.0" y="18.5" />
+                  <point x="-132.5" y="-0.0" />
+                </edge>
+                <edge source="User" target="Relationship">
+                  <point x="135.0" y="106.75" />
+                  <point x="-70.0" y="24.66666666666663" />
+                </edge>
+                <edge source="ActPhotoRela" target="Photo">
+                  <point x="76.0" y="-18.50000000000003" />
+                  <point x="222.48498331479425" y="168.27308120133483" />
+                  <point x="-114.0" y="-40.5" />
+                </edge>
+                <edge source="User" target="UserAcRela">
+                  <point x="135.0" y="-106.75" />
+                  <point x="-76.0" y="18.5" />
+                </edge>
+                <edge source="User" target="User">
+                  <point x="-135.0" y="53.375" />
+                  <point x="566.1256952169076" y="589.2807285873192" />
+                  <point x="566.1256952169076" y="779.4057285873192" />
+                  <point x="798.6256952169076" y="779.4057285873192" />
+                  <point x="67.5" y="213.5" />
+                </edge>
+                <edge source="User" target="Micropost">
+                  <point x="135.0" y="177.91666666666674" />
+                  <point x="-71.5" y="-18.75" />
+                </edge>
+                <edge source="Tag" target="ActTagRela">
+                  <point x="131.5" y="-0.0" />
+                  <point x="-76.0" y="-18.5" />
+                </edge>
+                <edge source="Activity" target="Message">
+                  <point x="132.5" y="-142.33333333333331" />
+                  <point x="577.0" y="172.5" />
+                  <point x="-76.0" y="-24.25" />
+                </edge>
+                <edge source="Activity" target="ActTagRela">
+                  <point x="132.5" y="142.33333333333337" />
+                  <point x="577.0" y="908.875" />
+                  <point x="877.0" y="908.875" />
+                  <point x="-76.0" y="18.5" />
+                </edge>
+                <edge source="Activity" target="Address">
+                  <point x="132.5" y="189.77777777777783" />
+                  <point x="536.2213570634037" y="849.8683259176863" />
+                  <point x="-85.0" y="-0.0" />
+                </edge>
+                <edge source="Activity" target="Micropost">
+                  <point x="132.5" y="47.44444444444446" />
+                  <point x="577.0" y="781.75" />
+                  <point x="-71.5" y="18.75" />
+                </edge>
+                <edge source="User" target="Message">
+                  <point x="135.0" y="-177.91666666666669" />
+                  <point x="-76.0" y="24.25" />
+                </edge>
+                <edge source="Relationship" target="User">
+                  <point x="-70.0" y="-24.66666666666663" />
+                  <point x="135.0" y="-35.58333333333337" />
+                </edge>
+                <edge source="Activity" target="Photo">
+                  <point x="132.5" y="-189.77777777777777" />
+                  <point x="575.6407119021135" y="238.39877641824248" />
+                  <point x="-114.0" y="40.5" />
+                </edge>
+                <edge source="Activity" target="User">
+                  <point x="132.5" y="-0.0" />
+                  <point x="-135.0" y="-53.375" />
+                </edge>
+              </edges>
+              <settings layout="Hierarchic Group" zoom="0.8356792144026186" x="554.5000000000002" y="601.0000000000001" />
+              <SelectedNodes />
+              <Categories>
+                <Category>Association fields</Category>
+                <Category>Migration fields</Category>
+              </Categories>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="encoding.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.8/lib/active_support/json/encoding.rb">
+      <file leaf-file-name="activity.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/activity.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="0" selection-start="2293" selection-end="2293" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="json.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p194/gems/activemodel-3.2.8/lib/active_model/serializers/json.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="89" column="0" selection-start="3778" selection-end="3778" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="set.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/set.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="229" column="0" selection-start="5773" selection-end="5773" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="callbacks.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/abstract_controller/callbacks.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="0" selection-start="599" selection-end="599" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="callbacks.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.8/lib/active_support/callbacks.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="413" column="0" selection-start="13601" selection-end="13601" vertical-scroll-proportion="0.0">
+            <state line="18" column="6" selection-start="513" selection-end="513" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -156,9 +200,9 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="22" />
-    <option name="width" value="1366" />
-    <option name="height" value="746" />
+    <option name="x" value="-1645" />
+    <option name="width" value="1645" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -171,10 +215,10 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
-    <option name="STATE" value="1" />
+    <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+    <navigator currentView="RailsProjectView" proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -187,6 +231,34 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="RailsProjectView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="leju" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="leju" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="leju" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="leju" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Models" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.ModelsFolderNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -205,52 +277,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="leju" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="leju" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="leju" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="leju" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="RailsProjectView">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="leju" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="leju" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -258,14 +284,40 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Font" />
+    <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="FullScreen" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager" selected="Rails.Development: leju">
+    <configuration default="false" name="RSpec: Spork DRb server" type="SporkRunConfigurationType" factoryName="Spork DRb" temporary="true">
+      <module name="leju" />
+      <SPORK_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <SPORK_RUN_CONFIG NAME="WORK DIR" VALUE="$PROJECT_DIR$" />
+      <SPORK_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
+      <SPORK_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
+      <SPORK_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
+      <envs>
+        <env name="JRUBY_OPTS" value="-X+O" />
+      </envs>
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="true" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
+      <SPORK_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$USER_HOME$/.rvm/gems/ruby-1.9.3-p194/bin/spork" />
+      <SPORK_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
+      <SPORK_RUN_CONFIG NAME="TEST_FRAMEWORK_ARGS" VALUE="RSPEC" />
+      <SPORK_RUN_CONFIG NAME="SPORK_RUN_CONFIG" VALUE="RSPEC" />
+      <RunnerSettings RunnerId="RubyDebugRunner" />
+      <RunnerSettings RunnerId="RubyRunner" />
+      <ConfigurationWrapper RunnerId="RubyDebugRunner" />
+      <ConfigurationWrapper RunnerId="RubyRunner" />
+      <method />
+    </configuration>
     <configuration default="true" type="RakeRunConfigurationType" factoryName="Rake">
       <module name="" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
@@ -415,6 +467,26 @@
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SETTINGS_VERSION" VALUE="2" />
       <method />
     </configuration>
+    <configuration default="true" type="SporkRunConfigurationType" factoryName="Spork DRb">
+      <module name="" />
+      <SPORK_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <SPORK_RUN_CONFIG NAME="WORK DIR" VALUE="" />
+      <SPORK_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
+      <SPORK_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
+      <SPORK_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
+      <envs />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
+      <SPORK_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="" />
+      <SPORK_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
+      <SPORK_RUN_CONFIG NAME="TEST_FRAMEWORK_ARGS" VALUE="RSPEC" />
+      <SPORK_RUN_CONFIG NAME="SPORK_RUN_CONFIG" VALUE="RSPEC" />
+      <method />
+    </configuration>
     <configuration default="false" name="Production: leju" type="RailsRunConfigurationType" factoryName="Rails">
       <predefined_log_file id="RUBY_RAILS_SERVER" enabled="true" />
       <module name="leju" />
@@ -513,12 +585,18 @@
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_PREREQS" VALUE="false" />
       <method />
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Rails.Production: leju" />
       <item index="1" class="java.lang.String" itemvalue="Rails.Development: leju" />
       <item index="2" class="java.lang.String" itemvalue="Rake.test" />
       <item index="3" class="java.lang.String" itemvalue="Rake.spec" />
+      <item index="4" class="java.lang.String" itemvalue="Spork DRb.RSpec: Spork DRb server" />
     </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Spork DRb.RSpec: Spork DRb server" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false">
@@ -548,18 +626,18 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1366" height="746" extended-state="6" />
-    <editor active="false" />
+    <frame x="-1645" y="0" width="1645" height="1050" extended-state="1" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.11666667" sideWeight="0.07241911" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11666667" sideWeight="0.118644066" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.11944965" sideWeight="0.8751312" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11944965" sideWeight="0.11752361" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3990755" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.66853935" sideWeight="0.09700816" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.88135594" sideWeight="0.8966455" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.88135594" sideWeight="0.8966455" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -638,108 +716,89 @@
           <url>file://$PROJECT_DIR$/app/controllers/user_ac_relas_controller.rb</url>
           <line>28</line>
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$PROJECT_DIR$/app/controllers/activities_controller.rb</url>
-          <line>115</line>
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$PROJECT_DIR$/app/controllers/activities_controller.rb</url>
-          <line>116</line>
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$PROJECT_DIR$/app/controllers/activities_controller.rb</url>
-          <line>114</line>
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$PROJECT_DIR$/app/controllers/activities_controller.rb</url>
-          <line>111</line>
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$PROJECT_DIR$/app/controllers/activities_controller.rb</url>
-          <line>110</line>
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/controllers/message_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="52" selection-start="384" selection-end="384" vertical-scroll-proportion="0.30136988" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/static_pages/show_all.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="272" column="74" selection-start="15591" selection-end="15591" vertical-scroll-proportion="0.20446736">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/helpers/sessions_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="133" selection-end="133" vertical-scroll-proportion="0.028938906">
-          <folding />
-        </state>
+        <state line="5" column="0" selection-start="133" selection-end="133" vertical-scroll-proportion="0.028938906" />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_controller/metal/implicit_render.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="83" selection-end="83" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="3" column="0" selection-start="83" selection-end="83" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/abstract_controller/base.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="166" column="0" selection-start="5925" selection-end="5925" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="166" column="0" selection-start="5925" selection-end="5925" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_controller/metal/rendering.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="291" selection-end="291" vertical-scroll-proportion="0.0">
+        <state line="9" column="0" selection-start="291" selection-end="291" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.8/lib/active_support/core_ext/class/attribute.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="80" column="0" selection-start="2926" selection-end="2926" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/abstract_controller/callbacks.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/activities_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="599" selection-end="599" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.8/lib/active_support/callbacks.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="413" column="0" selection-start="13601" selection-end="13601" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.8/lib/active_support/core_ext/object/to_json.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="819" selection-end="819" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/set.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="229" column="0" selection-start="5773" selection-end="5773" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.8/lib/active_support/json/encoding.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="0" selection-start="2293" selection-end="2293" vertical-scroll-proportion="0.0">
+        <state line="103" column="1" selection-start="3406" selection-end="3406" vertical-scroll-proportion="0.019438446">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p194/gems/activemodel-3.2.8/lib/active_model/serializers/json.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="0" selection-start="3778" selection-end="3778" vertical-scroll-proportion="0.0">
+        <state line="89" column="0" selection-start="3778" selection-end="3778" vertical-scroll-proportion="0.51403886">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/set.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="229" column="0" selection-start="5773" selection-end="5773" vertical-scroll-proportion="0.019438446">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/abstract_controller/callbacks.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="0" selection-start="599" selection-end="599" vertical-scroll-proportion="0.019715225">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.8/lib/active_support/callbacks.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="413" column="0" selection-start="13601" selection-end="13601" vertical-scroll-proportion="0.019438446">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_controller/metal/mime_responds.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="269" column="0" selection-start="9628" selection-end="9628" vertical-scroll-proportion="0.019438446">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.8/lib/active_support/json/encoding.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="0" selection-start="2293" selection-end="2293" vertical-scroll-proportion="0.019438446">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.8/lib/active_support/core_ext/object/to_json.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="0" selection-start="819" selection-end="819" vertical-scroll-proportion="0.29157668">
           <folding />
         </state>
       </provider>
@@ -751,24 +810,127 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.8/lib/active_support/core_ext/class/attribute.rb">
+    <entry file="file://$PROJECT_DIR$/app/models/activity.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="0" selection-start="2926" selection-end="2926" vertical-scroll-proportion="0.0">
+        <state line="18" column="6" selection-start="513" selection-end="513" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_controller/metal/mime_responds.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="269" column="0" selection-start="9628" selection-end="9628" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/activities_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="0" selection-start="3427" selection-end="3427" vertical-scroll-proportion="1.2">
-          <folding />
+    <entry file="uml://RailsDependency/#leju">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>RailsDependency</ID>
+          <OriginalElement>#leju</OriginalElement>
+          <nodes>
+            <node x="596.1256952169076" y="322.40572858731923">User</node>
+            <node x="337.0367074527252" y="705.7442992213569">InterestTagRecord</node>
+            <node x="917.5806451612902" y="145.5314238042269">Message</node>
+            <node x="917.5806451612902" y="749.9434093437152">ActTagRela</node>
+            <node x="618.4849833147944" y="97.86874304783089">Photo</node>
+            <node x="179.42602892102332" y="712.5407397107897">SignedAddress</node>
+            <node x="232.0" y="260.875">Activity</node>
+            <node x="610.5" y="801.375">Tag</node>
+            <node x="53.081717641615114" y="398.28424198053824">ActPhotoRela</node>
+            <node x="330.7708565072303" y="814.7098164627363">Address</node>
+            <node x="923.5806451612902" y="500.36475713756016">Relationship</node>
+            <node x="917.5806451612902" y="282.5314238042269">UserAcRela</node>
+            <node x="922.0806451612902" y="633.0684093437152">Micropost</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="Activity" target="Tag">
+              <point x="132.5" y="94.88888888888891" />
+              <point x="577.0" y="849.875" />
+              <point x="-131.5" y="-0.0" />
+            </edge>
+            <edge source="User" target="Activity">
+              <point x="-135.0" y="-160.125" />
+              <point x="577.0" y="367.625" />
+              <point x="132.5" y="-47.44444444444446" />
+            </edge>
+            <edge source="Activity" target="UserAcRela">
+              <point x="132.5" y="-94.88888888888891" />
+              <point x="577.0" y="303.75" />
+              <point x="-76.0" y="-18.5" />
+            </edge>
+            <edge source="ActPhotoRela" target="Activity">
+              <point x="76.0" y="18.5" />
+              <point x="-132.5" y="-0.0" />
+            </edge>
+            <edge source="User" target="Relationship">
+              <point x="135.0" y="106.75" />
+              <point x="-70.0" y="24.66666666666663" />
+            </edge>
+            <edge source="ActPhotoRela" target="Photo">
+              <point x="76.0" y="-18.50000000000003" />
+              <point x="222.48498331479425" y="168.27308120133483" />
+              <point x="-114.0" y="-40.5" />
+            </edge>
+            <edge source="User" target="UserAcRela">
+              <point x="135.0" y="-106.75" />
+              <point x="-76.0" y="18.5" />
+            </edge>
+            <edge source="User" target="User">
+              <point x="-135.0" y="53.375" />
+              <point x="566.1256952169076" y="589.2807285873192" />
+              <point x="566.1256952169076" y="779.4057285873192" />
+              <point x="798.6256952169076" y="779.4057285873192" />
+              <point x="67.5" y="213.5" />
+            </edge>
+            <edge source="User" target="Micropost">
+              <point x="135.0" y="177.91666666666674" />
+              <point x="-71.5" y="-18.75" />
+            </edge>
+            <edge source="Tag" target="ActTagRela">
+              <point x="131.5" y="-0.0" />
+              <point x="-76.0" y="-18.5" />
+            </edge>
+            <edge source="Activity" target="Message">
+              <point x="132.5" y="-142.33333333333331" />
+              <point x="577.0" y="172.5" />
+              <point x="-76.0" y="-24.25" />
+            </edge>
+            <edge source="Activity" target="ActTagRela">
+              <point x="132.5" y="142.33333333333337" />
+              <point x="577.0" y="908.875" />
+              <point x="877.0" y="908.875" />
+              <point x="-76.0" y="18.5" />
+            </edge>
+            <edge source="Activity" target="Address">
+              <point x="132.5" y="189.77777777777783" />
+              <point x="536.2213570634037" y="849.8683259176863" />
+              <point x="-85.0" y="-0.0" />
+            </edge>
+            <edge source="Activity" target="Micropost">
+              <point x="132.5" y="47.44444444444446" />
+              <point x="577.0" y="781.75" />
+              <point x="-71.5" y="18.75" />
+            </edge>
+            <edge source="User" target="Message">
+              <point x="135.0" y="-177.91666666666669" />
+              <point x="-76.0" y="24.25" />
+            </edge>
+            <edge source="Relationship" target="User">
+              <point x="-70.0" y="-24.66666666666663" />
+              <point x="135.0" y="-35.58333333333337" />
+            </edge>
+            <edge source="Activity" target="Photo">
+              <point x="132.5" y="-189.77777777777777" />
+              <point x="575.6407119021135" y="238.39877641824248" />
+              <point x="-114.0" y="40.5" />
+            </edge>
+            <edge source="Activity" target="User">
+              <point x="132.5" y="-0.0" />
+              <point x="-135.0" y="-53.375" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.8356792144026186" x="554.5000000000002" y="601.0000000000001" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Association fields</Category>
+            <Category>Migration fields</Category>
+          </Categories>
         </state>
       </provider>
     </entry>

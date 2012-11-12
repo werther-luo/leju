@@ -89,28 +89,23 @@
           <div class="container-fluid">     
             <a class="brand" href="<%=map_path%>" title="首页"> 乐 聚</a>  
             <div class="nav-collapse"> 
-              <ul class="nav nav-pills">
-              
-                <li><a href="<%=map_path%>">地  图</a>           
-                </li>
-                <li class="active"><a href="<%=show_all_path%>">活  动</a></li>
-             
-                <li><a href="friends.html">好  友</a></li>
-              </ul>
-                
-      
+                <ul class="nav nav-pills">
 
-            <ul class="nav nav-pills pull-right">
-	            <ul class="nav nav-pills pull-right">
-	            <li class="guess-button"><a href="#"><i class="icon-upload icon-white"></i> 活动推荐</a></li> 
-	           <li><%= link_to "设置", user_setting_path(current_user) %></li>
-	                    <li><%= link_to "退出", signout_path, method: "delete" %></li>
+                    <li><a href="<%=map_path%>">地  图</a>
+                    </li>
+                    <li class="active"><a href="<%=show_all_path%>">活  动</a></li>
+                </ul>
 
-	                    <li><a href="#">用户名:<%=@current_user.name%></a></li>
+                <ul class="nav nav-pills pull-right">
+                    <li class="guess-button"><a href="#"><i class="icon-upload icon-white"></i> 活动推荐</a></li>
+					<li><%= link_to "设置", user_setting_path(current_user) %></li>
+                    <li><%= link_to "退出", signout_path, method: "delete" %></li>
+
+                    <li><%= link_to "用户名:#{@current_user.name}", user_setting_path(current_user) %></li>
                     
-            
 
-            </ul>           
+                </ul>
+                        
 
             <form class="nav pull-right form-search input-append">
                 <input type="text" id="search1" class="input-medium search-query input-append" placeholder="搜人/新动态"><button type="submit" id="search-submit1" class="btn"><i class="icon-search"></i></button>
@@ -243,7 +238,7 @@
 
   <div class="pBody clearfix well">
   <div class="pLeft fl">
-    <div id="pQuick" class="pQuick clearfix"><a id="pqFace" href="http://en.gravatar.com/" target="_blank" title="头像" class="pbg pqFace"><img id="myface" src="home_files/7ba062b59a726dd93c0774dce3e284ad.jpg" height="110" width="110"></a><a href="<%=comment_path+"?id=#{@activity.id}"%>" title="发布文字" class="pbg pqWord"></a><a href="<%=picture_new_path+"?id=#{@activity.id}"%>" title="发布图片" class="pbg pqPic"></a><a href="content.html" title="发布视频" class="pbg pqVideo"></a><a href="content.html" title="分享" class="pbg pqB"></a></div>
+    <div id="pQuick" class="pQuick clearfix"><a id="pqFace" href="#" target="_blank" title="头像" class="pbg pqFace"><%= image_tag @user.photo.url(:thumb),height:"110", width:"110" %><a href="<%=comment_path+"?id=#{@activity.id}"%>" title="发布文字" class="pbg pqWord"></a><a href="<%=picture_new_path+"?id=#{@activity.id}"%>" title="发布图片" class="pbg pqPic"></a><a href="#" title="发布视频" class="pbg pqVideo"></a><a href="#" title="分享" class="pbg pqB"></a></div>
     <div id="pList" class="pList clearfix">
    	 	<% @acts_comments.each do |comment|%>
         <dl class="clearfix">

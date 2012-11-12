@@ -64,6 +64,25 @@ $(function () {
     GMaps.geolocate({
         success:function (position) {
             map.setCenter(position.coords.latitude, position.coords.longitude);
+			
+			$('#search-submit3').click(function(e){
+				e.preventDefault();
+				GMaps.geocode({
+				  address: $('#searchPlace').val(),
+				  callback: function(results, status) {
+					  console.log(status);
+				    if (status == 'OK') {
+				      var latlng = results[0].geometry.location;
+				      map.setCenter(latlng.lat(), latlng.lng());
+				      map.addMarker({
+				        lat: latlng.lat(),
+				        lng: latlng.lng(),
+						title: "这是您刚刚搜索的地点"
+				      });
+				    }
+				  }
+				});
+			});
 
             //成功定位并且页面加载完成后，提交经纬度，获取结果为3个list，将其渲染到地图和右下角弹窗那里去
             var initUrl = 'activities',

@@ -2,19 +2,14 @@
 	<%= link_to(truncate(activity.title, :length => 100), show_act_path+"?id=#{activity.id}", :title => activity.title) %>
 	<br>
   开始时间:
-  <span class="content"><%= activity.time_start %></span>
+  <span class="content"><%= activity.time_start.to_s(:due_time) %></span><br>
   结束时间:
-  <span class="content"><%= activity.time_end %></span>
+  <span class="content"><%= activity.time_end.to_s(:due_time) %></span><br>
   活动地点:
-  <span class="content"><%= activity.GUID %></span>
-
-  <span class="content"><%= activity.content %><%=activity.id%></span>
+  <span class="content"><%= activity.address.addressLine %></span><br>
+  活动内容:
+  <span class="content"><%= activity.content %><%=activity.id%></span><br>
  	<span class="timestamp">
     	Posted <%= time_ago_in_words(activity.created_at) %> ago.
   	</span>
-  	<% if current_user?(activity.user) %>
-    	<%= link_to "delete", activities_path+"/#{activity.id}", method: :delete,
-                                     data: { confirm: 'You sure?' },
-                                     title: activity.content %>
-  	<% end %>
 </li>
