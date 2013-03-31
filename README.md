@@ -8,12 +8,12 @@
 - Html template： bootstrap
  
 ####安装运行：
-   $ bundle install
-   $ rake db:reset
-   $ rake db:migrate
-   $ rake db:populate 
-   $ thin start  
-   $ rackup faye.ru -E production -s thin
+ $ bundle install
+ $ rake db:reset
+ $ rake db:migrate
+ $ rake db:populate 
+ $ thin start  
+ $ rackup faye.ru -E production -s thin
 
 ####用户名，密码：
 username | password
